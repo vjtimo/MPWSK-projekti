@@ -4,13 +4,21 @@ body {
   padding: 0;
   background-color: #f0f0f0;
 }
+a{
+  text-decoration: none;
+}
 #header {
   position: sticky;
   top: 0;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   background-color: blanchedalmond;
   width: 100%;
+  align-items: center;
+}
+#categories{
+  width: 75dvw;
 }
 #container {
   background-color: blueviolet;
@@ -38,12 +46,13 @@ main a {
 }
 
 nav {
-  width: 80dvw;
+  width: 75dvw;
   align-items: center;
-  height: 5dvh;
+  height: 7.5dvh;
   background-color: aqua;
   flex-direction: row;
   display: flex;
+  text-decoration: none;
   justify-content: space-between;
 }
 nav ul {
@@ -53,13 +62,14 @@ nav ul {
   margin: 0;
   list-style-type: none;
   width: 100dvw;
+  text-decoration: none;
 }
 
 #menu {
   display: flex;
   background-color: cornflowerblue;
   margin: auto;
-  width: 80%;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -67,12 +77,12 @@ nav ul {
 #menu img {
   margin: 10px;
   width: 80%;
-  height: 50%;
+  height: 80%;
 }
 
 #menu figure {
   background-color: antiquewhite;
-  width: calc(80% / 3);
+  width: calc(80% / 4);
   height: 50%;
   margin: 1rem;
 }
@@ -83,3 +93,19 @@ nav ul {
   width: 100%;
   word-wrap: break-word;
 }
+#links{
+  width: 30%;
+  justify-content: start;
+  display: flex;
+}
+#nav2{
+  width: 30%;
+  margin: 0 1rem;
+  justify-content: end;
+  display: flex;
+  
+}
+#nav2 a{
+  margin: 1rem;
+}
+
