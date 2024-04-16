@@ -19,7 +19,7 @@ a {
   width: 100%;
   align-items: center;
 }
-h2 {
+.title {
   margin: 8px;
   padding-left: 2rem;
 }
@@ -102,14 +102,14 @@ nav ul {
 
 main {
   display: block;
-  width: 100%;
+  width: 90%;
   height: auto;
   margin-bottom: 10dvh;
   justify-content: center;
 }
 
 #main-content {
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -209,4 +209,45 @@ main a {
   width: 100%;
   word-wrap: break-word;
   min-height: 100px;
+}
+#restaurants {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 0;
+}
+
+#restaurants li:first-child {
+  
+  border-radius: 10px 10px 0 0;
+}
+
+#restaurants li:last-child {
+  
+  border-radius: 0 0 10px 10px;
+  border-bottom: 1px solid #bababa;
+}
+
+#restaurants li {
+  list-style: none;
+  border: 1px solid #bababa;
+  border-bottom: none;
+  width: 75%;
+}
+
+#restaurants a {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  justify-content: center;
+  
+ 
+  width: 100%;
+}
+#restaurants h2 {
+  padding: 0;
+}
+#restaurants span {
+  padding: 0;
 }
