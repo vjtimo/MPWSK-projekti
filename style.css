@@ -20,6 +20,8 @@ a {
   align-items: center;
 }
 h2 {
+  margin: 8px;
+  padding-left: 2rem;
 }
 nav {
   width: 75dvw;
@@ -93,21 +95,21 @@ nav ul {
 
 #container {
   flex: 1;
-  width: 100dvw;
+  width: 100%;
   height: auto;
   display: block;
 }
 
 main {
   display: block;
-  width: 75dvw;
+  width: 100%;
   height: auto;
   margin-bottom: 10dvh;
   justify-content: center;
 }
 
 #main-content {
-  width: 100dvw;
+  width: 90%;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -136,6 +138,7 @@ main a {
   margin: auto;
   width: 100%;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 #menu img {
@@ -145,7 +148,7 @@ main a {
   border-radius: 10px;
 }
 
-#menu figure {
+#menu a {
   border-width: 1px;
   border-style: solid;
   border-color: #e9e6e6;
@@ -155,10 +158,55 @@ main a {
   height: 50%;
   margin: 1rem;
 }
+#menu figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
 #menu figcaption {
   text-align: center;
   border-bottom: none;
   padding: 5px;
   width: 100%;
   word-wrap: break-word;
+}
+
+#news {
+  display: grid;
+  margin: auto;
+  width: 100%;
+  flex-direction: row;
+  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#news a{
+  border: 1px solid #bababa;
+  flex: 1;
+  contain: layout;
+  height: 100%;
+}
+
+#news img {
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+  max-height: 200px;
+}
+#news figure {
+  width: 100%;
+  margin: 0;
+}
+#news figcaption {
+  text-align: center;
+  border-bottom: none;
+  padding: 5px;
+  width: 100%;
+  word-wrap: break-word;
+  min-height: 100px;
 }
