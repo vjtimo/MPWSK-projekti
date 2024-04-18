@@ -1,125 +1,140 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="menuCss.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-</head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="menuCss.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-<body>
+  <body>
     <div id="container">
-        <div id="header">
-            <nav id="main-nav">
-                <div id="links">
-                    <ul>
-                        <li><a href="index.html">Etusivu</a></li>
-                        <li><a href="menu.html">Menu</a></li>
-                        <li><a href="restaurants.html">Ravintolat</a></li>
-                        <li><a href="about.html">Tietoa</a></li>
-                    </ul>
-                </div>
-                <div id="nav2">
-                    <a href="login.html"><img src="icons/user.svg"><span>login</span></a>
-                    <a href="cart.html"><img src="icons/shopping-cart.svg"><span>cart</span></a>
-                </div>
-            </nav>
+      <div id="header">
+        <nav id="main-nav">
+          <div id="links">
+            <ul>
+              <li><a href="index.html">Etusivu</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="restaurants.html">Ravintolat</a></li>
+              <li><a href="about.html">Tietoa</a></li>
+            </ul>
+          </div>
+          <div id="nav2">
+            <a href="login.html"
+              ><img src="icons/user.svg" /><span>login</span></a
+            >
+            <a href="cart.html"
+              ><img src="icons/shopping-cart.svg" /><span>cart</span></a
+            >
+          </div>
+        </nav>
+      </div>
 
-
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img
+            src="https://www.oulunkylanpizzeria.fi/wp-content/uploads/2019/01/Kebab-Ranskalaisilla.jpeg"
+            alt="Photo 1"
+          />
         </div>
 
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="https://www.oulunkylanpizzeria.fi/wp-content/uploads/2019/01/Kebab-Ranskalaisilla.jpeg"
-                    alt="Photo 1">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="https://www.southernliving.com/thmb/3x3cJaiOvQ8-3YxtMQX0vvh1hQw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2652401_QFSSL_SupremePizza_00072-d910a935ba7d448e8c7545a963ed7101.jpg"
-                    alt="Photo 2">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="https://www.thespruceeats.com/thmb/2GoDt7juuaU7lxtQDq-_IjEr6t8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-our-favorite-simple-green-salad-recipe-7370448-hero-01-4ca9788a0a3c4d53b70f1d07f8382b7f.jpg"
-                    alt="Photo 3">
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="mySlides fade">
+          <img
+            src="https://www.southernliving.com/thmb/3x3cJaiOvQ8-3YxtMQX0vvh1hQw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2652401_QFSSL_SupremePizza_00072-d910a935ba7d448e8c7545a963ed7101.jpg"
+            alt="Photo 2"
+          />
         </div>
 
-        <script src="menuJs.js"></script>
-
-        <div id="main-content">
-            <main>
-
-                <h2 class="title">Suosituimmat</h2>
-                <div id="menu">
-                    <div id="kebabit" class="menu-categ">
-                        <a href="menu.html" class="link">
-                            <figure>
-                                <img src="https://placehold.co/300x200" alt="Pizza">
-                                <h3>Pizzanimi</h3>
-                                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur
-                                    facere similique placeat repellat expedita distinctio modi omnis ab consequatur in
-                                    sunt reiciendis non, perspiciatis voluptates rerum eligendi laborum voluptatem.
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <a href="menu.html" class="link">
-                            <figure>
-                                <img src="https://placehold.co/300x200" alt="Pizza">
-                                <h3>Pizzanimi</h3>
-                                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur
-                                    facere similique placeat repellat expedita distinctio modi omnis ab consequatur in
-                                    sunt reiciendis non, perspiciatis voluptates rerum eligendi laborum voluptatem.
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <a href="menu.html" class="link">
-                            <figure>
-                                <img src="https://placehold.co/300x200" alt="Pizza">
-                                <h3>Pizzanimi</h3>
-                                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur
-                                    facere similique placeat repellat expedita distinctio modi omnis ab consequatur in
-                                    sunt reiciendis non, perspiciatis voluptates rerum eligendi laborum voluptatem.
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <a href="menu.html" class="link">
-                            <figure>
-                                <img src="https://placehold.co/300x200" alt="Pizza">
-                                <h3>Pizzanimi</h3>
-                                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur
-                                    facere similique placeat repellat expedita distinctio modi omnis ab consequatur in
-                                    sunt reiciendis non, perspiciatis voluptates rerum eligendi laborum voluptatem.
-                                </figcaption>
-                            </figure>
-                        </a>
-
-                    </div>
-                </div>
-                <div id="news">
-
-                    <a>
-                        <figure>
-                            <img src="pictures/kebab.jpg">
-                            <figcaption>Painetaan sitä speissiä</figcaption>
-                        </figure>
-                    </a>
-                    <a>
-                        <figure>
-                            <img src="pictures/pizza.jpg">
-                            <figcaption>Painetaan sitä speissiä</figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </main>
+        <div class="mySlides fade">
+          <img
+            src="https://www.thespruceeats.com/thmb/2GoDt7juuaU7lxtQDq-_IjEr6t8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-our-favorite-simple-green-salad-recipe-7370448-hero-01-4ca9788a0a3c4d53b70f1d07f8382b7f.jpg"
+            alt="Photo 3"
+          />
         </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+
+      <script src="menuJs.js"></script>
+
+      <div id="main-content">
+        <main>
+          <h2 class="title">Suosituimmat</h2>
+          <div id="menu">
+            <div id="kebabit" class="menu-categ">
+              <a href="menu.html" class="link">
+                <figure>
+                  <img src="https://placehold.co/300x200" alt="Pizza" />
+                  <h3>Pizzanimi</h3>
+                  <figcaption>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </figcaption>
+                </figure>
+              </a>
+              <a href="menu.html" class="link">
+                <figure>
+                  <img src="https://placehold.co/300x200" alt="Pizza" />
+                  <h3>Pizzanimi</h3>
+                  <figcaption>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </figcaption>
+                </figure>
+              </a>
+              <a href="menu.html" class="link">
+                <figure>
+                  <img src="https://placehold.co/300x200" alt="Pizza" />
+                  <h3>Pizzanimi</h3>
+                  <figcaption>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </figcaption>
+                </figure>
+              </a>
+              <a href="menu.html" class="link">
+                <figure>
+                  <img src="https://placehold.co/300x200" alt="Pizza" />
+                  <h3>Pizzanimi</h3>
+                  <figcaption>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </figcaption>
+                </figure>
+              </a>
+            </div>
+          </div>
+          <div id="news">
+            <a>
+              <figure>
+                <img src="pictures/kebab.jpg" />
+                <figcaption>Painetaan sitä speissiä</figcaption>
+              </figure>
+            </a>
+            <a>
+              <figure>
+                <img src="pictures/pizza.jpg" />
+                <figcaption>Painetaan sitä speissiä</figcaption>
+              </figure>
+            </a>
+          </div>
+        </main>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
 
 <!-- <!DOCTYPE html>
