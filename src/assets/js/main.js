@@ -1,8 +1,12 @@
-import {regForm} from './variables.js';
-import {registerUser} from './api.js';
+import {regForm, loginForm} from './variables.js';
+import {registerUser, login} from './api.js';
+
 //Register user post request
 regForm.addEventListener('submit', async (evt) => {
-  console.log(regForm);
-  evt.preventDefault(regForm);
+  evt.preventDefault();
   registerUser(regForm);
+});
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault;
+  login(loginForm);
 });
