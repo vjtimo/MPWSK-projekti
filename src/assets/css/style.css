@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
@@ -27,7 +27,7 @@ a {
 }
 .title {
   margin: 8px;
-  padding-left: 2rem;
+  text-align: center;
 }
 #header nav {
   max-width: 1200px;
@@ -175,31 +175,32 @@ main a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   margin: 0;
   padding: 0;
 }
 #menu figcaption {
-  text-align: center;
   border-bottom: none;
-  padding: 5px;
   width: 100%;
-  word-wrap: break-word;
 }
-
+figcaption p {
+  padding: 5px 1rem;
+}
 #news {
   display: grid;
-  margin: auto;
+  margin: 2rem auto;
   width: 100%;
+  max-width: 1200px;
   flex-direction: row;
   align-items: start;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
-  margin: 1rem 0;
 }
 
 #news a {
-  border: 1px solid #bababa;
+  border: 1px solid #e9e5e5;
   flex: 1;
+  border-radius: 10px;
   contain: layout;
   height: 100%;
 }
@@ -259,4 +260,39 @@ main a {
 }
 #restaurants span {
   padding: 0;
+}
+#loginpage {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#loginpage h2 {
+  grid-column: 1;
+  grid-row: 1;
+}
+#loginpage aside {
+  width: 60%;
+  margin: 2rem 0;
+}
+#loginwrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+#loginpage form {
+  display: flex;
+  flex-direction: column;
+
+  border: 1;
+  border-width: 1px;
+  width: 300px;
+}
+#loginpage img {
+  object-fit: cover;
+}
+#loginpage input {
+  margin: 10px 0;
+  width: 100%;
+  height: 2rem;
 }
