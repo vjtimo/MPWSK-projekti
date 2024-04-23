@@ -288,10 +288,14 @@ figcaption p {
   border-width: 1px;
   width: 300px;
 }
+#loginpage label {
+  font-size: small;
+  margin: 2px 0;
+}
 #loginpage img {
   object-fit: cover;
 }
-#loginpage input {
+#loginpage button {
   margin: 10px 0;
   width: 100%;
   height: 2rem;
