@@ -300,3 +300,9 @@ figcaption p {
   width: 100%;
   height: 2rem;
 }
+#login {
+  cursor: pointer;
+}
+#logout {
+  cursor: pointer;
+}

@@ -52,12 +52,17 @@ const login = async (loginForm) => {
     },
     body: JSON.stringify(bodyContent),
   };
-  try {
-    const result = await fetchData(url + 'api/auth/login', fetchOptions);
-    console.log('Logged in', result);
-    return result;
-  } catch (error) {
-    console.error('Login failed', error.message);
+  const response = await fetch(url + 'api/auth/login', fetchOptions);
+  const json = await response.json();
+  console.log(json.user);
+  if (!json.user) {
+    alert(json.error.message);
+  } else {
+    // save token and user
+    sessionStorage.setItem('token', json.token);
+    sessionStorage.setItem('user', JSON.stringify(json.user));
+    return JSON.parse(sessionStorage.getItem('user'));
   }
 };
+
 export {registerUser, login};
