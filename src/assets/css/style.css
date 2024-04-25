@@ -13,6 +13,9 @@ body {
 a {
   text-decoration: none;
 }
+a:visited {
+  color: inherit;
+}
 #header {
   box-shadow: 3px 2px 15px #949393;
   position: sticky;
@@ -167,6 +170,7 @@ main a {
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   width: calc(80% / 4);
+  min-width: calc(80 / 2);
   height: 50%;
   margin: 1rem;
 }
@@ -175,17 +179,19 @@ main a {
   flex-direction: column;
 
   align-items: center;
-
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 #menu figcaption {
   border-bottom: none;
   width: 100%;
+  overflow: hidden;
 }
 .figure-header {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 .figure-header p {
@@ -199,7 +205,7 @@ main a {
   justify-content: center;
   border-style: solid;
   border-width: 1px;
-  width: 5rem;
+  width: 40%;
   letter-spacing: 1px;
   font-style: normal;
 
@@ -209,13 +215,18 @@ main a {
   background-color: rgb(51, 193, 29);
 }
 figure h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
   text-align: center;
   padding: 0 1rem;
+  display: block;
   margin: 5px;
 }
 figcaption p {
   padding: 5px 1rem;
   margin: 5px 0;
+  display: block;
 }
 #news {
   display: grid;
@@ -336,4 +347,36 @@ figcaption p {
 }
 #logout {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    width: 100%;
+  }
+  #menu a {
+    width: 100%;
+    margin: 0;
+  }
+  #menu figure {
+    flex-direction: row;
+    height: 100%;
+  }
+  #menu img {
+    border-radius: 0 10px 10px 0;
+    object-fit: cover;
+    height: 100%;
+  }
+  #menu figcaption {
+    height: 100%;
+  }
+  .figure-header {
+    flex-direction: column;
+  }
+  .figure-header h3 {
+    width: 100%;
+    display: flex;
+  }
+  .figure-header p {
+    width: 50%;
+  }
 }
