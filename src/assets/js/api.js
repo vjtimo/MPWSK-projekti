@@ -1,8 +1,8 @@
 import {setLogged, url} from './variables.js';
 
-async function fetchData(url, options) {
+async function fetchData(route, options) {
   try {
-    const response = await fetch('http://127.0.0.1:3000/' + url, options);
+    const response = await fetch(url + route, options);
     console.log(response);
     if (response.ok) {
       console.log('Promise resolved and HTTP status is successful');
@@ -33,7 +33,7 @@ const registerUser = async (regForm) => {
     body: JSON.stringify(bodyContent),
   };
   try {
-    const result = await fetchData(url + 'api/users/register', fetchOptions);
+    const result = await fetchData('api/users/register', fetchOptions);
     console.log('User registered:', result);
     return result;
   } catch (error) {

@@ -1,10 +1,6 @@
 * {
   box-sizing: border-box;
 }
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
 
 .slideshow-container {
   width: 100%;
@@ -24,7 +20,7 @@ img {
   width: 100%;
   object-fit: fill;
   height: 100%;
-
+}
 .fade {
   animation-name: fade;
   animation-duration: 1.5s;

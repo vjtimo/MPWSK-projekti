@@ -38,6 +38,7 @@ if (currentPath === '/src/login.html') {
   });
 }
 if (currentPath === '/src/menu.html') {
+  console.log('test');
   displayItems();
 }
 //placeholder logout
