@@ -1,5 +1,6 @@
 import {registerUser, login} from './api.js';
 import {checkSession, logout} from './auth.js';
+import {displayItems} from './components.js';
 import {isLogged, setLogged, loginLink, logoutLink} from './variables.js';
 
 //used to check the page the user is currently on
@@ -35,6 +36,9 @@ if (currentPath === '/src/login.html') {
       console.log('Failed to log in');
     }
   });
+}
+if (currentPath === '/src/menu.html') {
+  displayItems();
 }
 //placeholder logout
 logoutLink.addEventListener('click', (e) => {

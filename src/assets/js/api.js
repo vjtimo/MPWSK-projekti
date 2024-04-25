@@ -2,7 +2,8 @@ import {setLogged, url} from './variables.js';
 
 async function fetchData(url, options) {
   try {
-    const response = await fetch(url, options);
+    const response = await fetch('http://127.0.0.1:3000/' + url, options);
+    console.log(response);
     if (response.ok) {
       console.log('Promise resolved and HTTP status is successful');
       const jsonData = await response.json();
@@ -66,4 +67,4 @@ const login = async (loginForm) => {
   }
 };
 
-export {registerUser, login};
+export {registerUser, login, fetchData};
