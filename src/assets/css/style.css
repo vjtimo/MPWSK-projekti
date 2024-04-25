@@ -173,7 +173,7 @@ main a {
 #menu figure {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
 
   margin: 0;
@@ -183,7 +183,34 @@ main a {
   border-bottom: none;
   width: 100%;
 }
-#menu h3 {
+.figure-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.figure-header p {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  border: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  border-color: rgb(131, 129, 129);
+  justify-content: center;
+  border-style: solid;
+  border-width: 1px;
+  width: 5rem;
+  letter-spacing: 1px;
+  font-style: normal;
+
+  font-weight: 550;
+  color: #fefefe;
+  border-radius: 15px;
+  background-color: rgb(51, 193, 29);
+}
+figure h3 {
+  text-align: center;
+  padding: 0 1rem;
   margin: 5px;
 }
 figcaption p {
