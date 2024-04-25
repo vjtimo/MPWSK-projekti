@@ -33,7 +33,7 @@ a:visited {
   text-align: center;
 }
 #header nav {
-  max-width: 1200px;
+  max-width: 1300px;
   width: 100%;
   align-items: center;
 
@@ -90,7 +90,7 @@ nav li {
   justify-content: start;
   display: flex;
   margin-top: 5px;
-  width: 1200px;
+  width: 1300px;
 }
 #categorylist a {
   flex-direction: column;
@@ -144,7 +144,7 @@ main a {
   flex: 1;
   display: block;
   margin: auto;
-  max-width: 1200px;
+  max-width: 1300px;
   flex-wrap: wrap;
 }
 .menu-categ {
@@ -205,7 +205,9 @@ main a {
   justify-content: center;
   border-style: solid;
   border-width: 1px;
-  width: 40%;
+  width: 30%;
+  margin-left: auto;
+  margin-right: 8px;
   letter-spacing: 1px;
   font-style: normal;
 
@@ -217,8 +219,8 @@ main a {
 figure h3 {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 60%;
-  text-align: center;
+  max-width: 70%;
+  flex: 1;
   padding: 0 1rem;
   display: block;
   margin: 5px;
