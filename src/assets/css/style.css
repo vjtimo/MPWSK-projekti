@@ -183,8 +183,12 @@ main a {
   border-bottom: none;
   width: 100%;
 }
+#menu h3 {
+  margin: 5px;
+}
 figcaption p {
   padding: 5px 1rem;
+  margin: 5px 0;
 }
 #news {
   display: grid;
