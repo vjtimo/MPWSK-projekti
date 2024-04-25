@@ -1,4 +1,4 @@
-import {url} from './variables.js';
+import {setLogged, url} from './variables.js';
 
 async function fetchData(url, options) {
   try {
@@ -61,6 +61,7 @@ const login = async (loginForm) => {
     // save token and user
     sessionStorage.setItem('token', json.token);
     sessionStorage.setItem('user', JSON.stringify(json.user));
+    setLogged(true);
     return JSON.parse(sessionStorage.getItem('user'));
   }
 };

@@ -7,7 +7,7 @@ const currentPath = window.location.pathname;
 
 //gets userdata from current session
 let user = JSON.parse(sessionStorage.getItem('user'));
-
+console.log(user);
 //modifies site based on logged state
 const startApp = (logged) => {
   logged ? console.log('logged in') : console.log('not logged in');
