@@ -2,10 +2,11 @@ import {registerUser, login} from './api.js';
 import {checkSession, logout} from './auth.js';
 import {displayItems} from './components.js';
 import {isLogged, setLogged, loginLink, logoutLink} from './variables.js';
-
+const cartModal = document.querySelector('#cart-modal');
+const shoppingCart = document.querySelector('#cart');
 //used to check the page the user is currently on
 const currentPath = window.location.pathname;
-
+const backDrop = document.querySelector('.modalBackdrop');
 //gets userdata from current session
 let user = JSON.parse(sessionStorage.getItem('user'));
 console.log(user);
@@ -41,11 +42,23 @@ if (currentPath === '/src/menu.html') {
   console.log('test');
   displayItems();
 }
+
 //placeholder logout
 logoutLink.addEventListener('click', (e) => {
   logout();
   startApp(false);
 });
+shoppingCart.addEventListener('click', (e) => {
+  cartModal.classList.toggle('active');
+
+  backDrop.style.display = 'flex';
+  backDrop.addEventListener('click', handleClick);
+});
+const handleClick = (e) => {
+  cartModal.classList.toggle('active');
+  e.target.style.display = 'none';
+  e.target.removeEventListener('click', handleClick);
+};
 
 // Check if the user is logged in
 (async () => {

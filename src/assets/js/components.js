@@ -60,17 +60,5 @@ const createModal = (data) => {
   });
   modal.style.display = 'flex';
 };
-
-/*    <div id="pizza-modal" style="display: none;">
-      <div id ="modal-content">
-      <img src="pictures/pizza.jpg" alt="image of pizza"></img>
-
-      <div id="modal-tayte">
-        <h2>Pizzan nimi</h2>
-        <p>Kinkku,Ananas,Herkkusieni</p>
-        <h3>10,40€<h3>
-          <button>Lisää ostoskoriin</button>
-      </div>
-    </div>
-*/
+const cart = () => {};
 export {displayItems};
