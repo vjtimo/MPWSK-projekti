@@ -1,6 +1,6 @@
 import {registerUser, login} from './api.js';
 import {checkSession, logout} from './auth.js';
-import {displayItems} from './components.js';
+import {displayItems, createCart} from './components.js';
 import {isLogged, setLogged, loginLink, logoutLink} from './variables.js';
 const cartModal = document.querySelector('#cart-modal');
 const shoppingCart = document.querySelector('#cart');
@@ -48,17 +48,27 @@ logoutLink.addEventListener('click', (e) => {
   logout();
   startApp(false);
 });
-shoppingCart.addEventListener('click', (e) => {
+
+const toggleCart = () => {
   cartModal.classList.toggle('active');
 
-  backDrop.style.display = 'flex';
-  backDrop.addEventListener('click', handleClick);
-});
-const handleClick = (e) => {
-  cartModal.classList.toggle('active');
-  e.target.style.display = 'none';
-  e.target.removeEventListener('click', handleClick);
+  if (cartModal.classList.contains('active')) {
+    createCart(cartModal);
+    backDrop.classList.add('visible');
+  } else {
+    cartModal.addEventListener(
+      'transitionend',
+      () => {
+        cartModal.innerHTML = '';
+      },
+      {once: true}
+    );
+
+    backDrop.classList.remove('visible');
+  }
 };
+shoppingCart.addEventListener('click', toggleCart);
+backDrop.addEventListener('click', toggleCart);
 
 // Check if the user is logged in
 (async () => {

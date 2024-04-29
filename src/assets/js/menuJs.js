@@ -2,7 +2,7 @@ var slideIndex = 0;
 var slides = document.getElementsByClassName('mySlides');
 var timer = null;
 
-function showSlides() {
+const showSlides = () => {
   for (var i = 0; i < slides.length; i++) {
     slides[i].style.display = 'none';
   }
@@ -12,7 +12,7 @@ function showSlides() {
   }
   slides[slideIndex - 1].style.display = 'block';
   timer = setTimeout(showSlides, 3000);
-}
+};
 
 function plusSlides(n) {
   clearTimeout(timer);

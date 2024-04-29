@@ -405,27 +405,39 @@ a:hover {
 .modalBackdrop {
   position: fixed;
   inset: 0;
+  display: none;
   width: 100dvw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 300;
 }
-
+.modalBackdrop.visible {
+  display: flex;
+}
 #cart-modal {
   display: flex;
   position: fixed;
+
   top: 0;
   width: 0px;
   right: 0;
   height: 100dvh;
-
+  overflow: hidden;
   background-color: #ffffff;
   z-index: 9999;
-  transition: all 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+#cart-modal aside {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#cart-modal h2 {
+  padding-top: 1rem;
 }
 
 #cart-modal.active {
-  width: 350px;
+  width: 400px;
 }
 #show {
   display: flex;

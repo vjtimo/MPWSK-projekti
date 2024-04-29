@@ -60,5 +60,11 @@ const createModal = (data) => {
   });
   modal.style.display = 'flex';
 };
-const cart = () => {};
-export {displayItems};
+const createCart = (modal) => {
+  console.log(modal);
+  const cart = document.createElement('aside');
+
+  cart.innerHTML = '<h2>Shopping Cart</h2>';
+  modal.append(cart);
+};
+export {displayItems, createCart};
