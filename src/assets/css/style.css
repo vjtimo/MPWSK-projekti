@@ -361,7 +361,7 @@ figcaption p {
   border-radius: 15px;
   inset: 0px;
   height: 50dvh;
-  display: flex;
+  display: none;
 }
 #modal-content {
   border-radius: 15px;
@@ -411,7 +411,7 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 300;
 }
-.modalBackdrop.visible {
+.visible {
   display: flex;
 }
 #cart-modal {
@@ -427,11 +427,7 @@ a:hover {
   z-index: 9999;
   transition: width 0.3s ease-in-out;
 }
-#cart-modal aside {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
+
 #cart-modal h2 {
   padding-top: 1rem;
 }
@@ -439,8 +435,26 @@ a:hover {
 #cart-modal.active {
   width: 400px;
 }
+.cartContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 2rem;
+}
 #show {
   display: flex;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.product button {
+  align-self: center;
+
+  width: 40px;
+  height: 30px;
 }
 @media only screen and (max-width: 600px) {
   main {

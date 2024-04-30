@@ -1,42 +1,6 @@
 import {fetchData} from './api.js';
-const displayItems = async () => {
-  try {
-    const data = await fetchData('api/pizzas');
-    const div = document.querySelector('#pizzat');
-    console.log(data);
-    for (let i = 0; i < data.length; i++) {
-      const name = data[i].nimi;
-      const description = data[i].kuvaus_fi;
-      const price = data[i].hinta;
+import {addItemToCart, getOrderList} from './variables.js';
 
-      const link = document.createElement('a');
-      link.className = 'link';
-      link.innerHTML = `
-      <figure>
-        <img src="pictures/pizza.jpg" alt="Pizza" />
-
-        <figcaption>
-          <div class="figure-header">
-            <h3>${name}</h3>
-            <p>${price}€</p>
-          </div>
-          <p>
-            ${description}
-          </p>
-        </figcaption>
-      </figure>
-    </a>
-    `;
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        createModal(data[i]);
-      });
-      div.appendChild(link);
-    }
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 const createModal = (data) => {
   const modalDrop = document.querySelector('.modalBackdrop');
   const {nimi, kuvaus_fi, hinta} = data;
@@ -49,22 +13,36 @@ const createModal = (data) => {
     <h2>${nimi}</h2>
     <p>${kuvaus_fi}</p>
     <h3>${hinta}<h3>
-      <button>Lisää ostoskoriin</button>
+      <button class="addToCart">Lisää ostoskoriin</button>
   </div>`;
-  modalDrop.style.display = 'block';
+  let addToCartbtn = document.querySelector('.addToCart');
+  addToCartbtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    addItemToCart(data);
+  });
+  modalDrop.classList.add('visible');
+  modal.classList.add('visible');
   const close = document.querySelector('.close-button');
 
   close.addEventListener('click', (e) => {
     modal.style.display = 'none';
-    modalDrop.style.display = 'none';
+    modalDrop.classList.remove('visible');
   });
   modal.style.display = 'flex';
 };
 const createCart = (modal) => {
   console.log(modal);
   const cart = document.createElement('aside');
+  cart.className = 'cartContent';
+  const cartItems = JSON.parse(getOrderList());
 
   cart.innerHTML = '<h2>Shopping Cart</h2>';
+  cartItems.forEach((item) => {
+    cart.innerHTML += `
+    <p>${item.nimi}</p>
+    <p>${item.hinta}</p>`;
+  });
+
   modal.append(cart);
 };
-export {displayItems, createCart};
+export {createCart, createModal};

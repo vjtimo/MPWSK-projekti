@@ -13,4 +13,5 @@ const setLogged = (status) => {
     console.error('Status must be a boolean');
   }
 };
+
 export {url, nav2, isLogged, setLogged, loginLink, logoutLink};
