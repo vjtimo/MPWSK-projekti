@@ -2,7 +2,9 @@ import {fetchData} from './api.js';
 const displayItems = async () => {
   try {
     const data = await fetchData('api/pizzas');
-    const div = document.querySelector('#pizzat');
+    const pizzaDiv = document.querySelector('#pizzat');
+    const kebabDiv = document.querySelector('#kebabit');
+    const juomaDiv = document.querySelector('#juomat');
     console.log(data);
     for (let i = 0; i < data.length; i++) {
       const name = data[i].nimi;
@@ -31,7 +33,15 @@ const displayItems = async () => {
         e.preventDefault();
         createModal(data[i]);
       });
-      div.appendChild(link);
+      if (data[i].kategoria_id === 1) {
+        pizzaDiv.appendChild(link);
+      }
+      if (data[i].kategoria_id === 2) {
+        kebabDiv.appendChild(link);
+      }
+      if (data[i].kategoria_id === 3) {
+        juomaDiv.appendChild(link);
+      }
     }
   } catch (error) {
     console.log(error.message);

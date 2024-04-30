@@ -46,6 +46,7 @@ const login = async (loginForm) => {
     tunnus: new FormData(loginForm).get('uname'),
     salasana: new FormData(loginForm).get('pass'),
   };
+  console.log(bodyContent);
   const fetchOptions = {
     method: 'POST',
     headers: {
