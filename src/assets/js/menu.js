@@ -3,7 +3,7 @@ import {fetchData} from './api.js';
 import {addItemToCart} from './shoppingCart.js';
 const displayItems = async () => {
   try {
-    const data = await fetchData('api/pizzas');
+    const data = await fetchData('pizzas');
     const div = document.querySelector('#pizzat');
     console.log(data);
     for (let i = 0; i < data.length; i++) {

@@ -33,7 +33,7 @@ const registerUser = async (regForm) => {
     body: JSON.stringify(bodyContent),
   };
   try {
-    const result = await fetchData('api/users/register', fetchOptions);
+    const result = await fetchData('users/register', fetchOptions);
     console.log('User registered:', result);
     return result;
   } catch (error) {
@@ -53,7 +53,7 @@ const login = async (loginForm) => {
     },
     body: JSON.stringify(bodyContent),
   };
-  const response = await fetch(url + 'api/auth/login', fetchOptions);
+  const response = await fetch(url + 'auth/login', fetchOptions);
   const json = await response.json();
   console.log(json.user);
   if (!json.user) {
@@ -66,5 +66,24 @@ const login = async (loginForm) => {
     return JSON.parse(sessionStorage.getItem('user'));
   }
 };
+async function getPizzasByIds(ids) {
+  console.log('IDS: ', ids);
+  const route = `pizzas/${ids.join(',')}`;
 
-export {registerUser, login, fetchData};
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const pizzas = await fetchData(route, options);
+
+    console.log('Fetched pizzas:', pizzas);
+    return pizzas;
+  } catch (error) {
+    console.error('Error fetching pizzas by IDs:', error);
+  }
+}
+export {registerUser, login, fetchData, getPizzasByIds};

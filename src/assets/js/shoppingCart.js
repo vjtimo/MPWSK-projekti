@@ -14,21 +14,35 @@ const createCart = () => {
     cartItems.forEach((item) => {
       const product = document.createElement('div');
       const removeBtn = document.createElement('button');
+      const addBtn = document.createElement('button');
+      addBtn.className = 'addBtn';
+      addBtn.setAttribute('data-id', item.id);
+      addBtn.innerText = '+';
       removeBtn.className = 'removeBtn';
       product.className = 'product';
       product.innerHTML = `
-    <p>${item.nimi} ${item.quantity ? ' x ' + item.quantity : ''} </p>
-    <button data-id=${item.id})>+</button>
-    <p>${item.hinta}</p>`;
+    <p>${item.nimi} ${item.quantity ? ' x ' + item.quantity : ''} </p>`;
       removeBtn.setAttribute('data-id', item.id);
       removeBtn.innerText = '-';
+
       removeBtn.addEventListener('click', (e) =>
         removeItemCart(e, removeBtn.getAttribute('data-id'))
       );
-
+      addBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        addOne(addBtn.getAttribute('data-id'));
+      });
+      product.append(addBtn);
       product.append(removeBtn);
       cart.append(product);
     });
+    const total = document.createElement('p');
+    total.innerText = 'Kokonaishinta: ' + calculateTotal();
+    cart.append(total);
+    cart.insertAdjacentHTML(
+      'beforeend',
+      "<a id='orderLink' href='order.html'>Tilaa</a>"
+    );
   } else {
     console.log('test');
     console.log('test2');
@@ -38,7 +52,7 @@ const createCart = () => {
     console.log('test2');
   }
 };
-const renderCartProducts = () => {};
+
 const getOrderList = () => {
   if (!localStorage.getItem('STORED_ORDERS')) {
     localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
@@ -77,7 +91,14 @@ const removeItemCart = (e, id) => {
   localStorage.setItem('STORED_ORDERS', JSON.stringify(cart));
   createCart();
 };
-
+const addOne = (id) => {
+  let cart = getOrderList();
+  let product = cart.find((item) => String(item.id) === String(id));
+  console.log(product);
+  product.quantity++;
+  localStorage.setItem('STORED_ORDERS', JSON.stringify(cart));
+  createCart();
+};
 const toggleCart = () => {
   cartModal.classList.toggle('active');
   shoppingCart.style.pointerEvents = 'none';
@@ -99,4 +120,16 @@ const toggleCart = () => {
     backDrop.classList.remove('visible');
   }
 };
-export {createCart, addItemToCart, toggleCart};
+
+const calculateTotal = () => {
+  let cart = getOrderList();
+  console.log(cart);
+  const total = cart.reduce(
+    (total, item) => item.hinta * item.quantity + total,
+    0
+  );
+
+  return total;
+};
+
+export {createCart, addItemToCart, toggleCart, getOrderList};
