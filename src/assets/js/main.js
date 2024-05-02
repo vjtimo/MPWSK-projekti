@@ -1,11 +1,12 @@
-import {registerUser, login} from './api.js';
+import {registerUser, login, getRestaurants} from './api.js';
 import {checkSession, logout} from './auth.js';
 import {displayItems} from './components.js';
 import {isLogged, setLogged, loginLink, logoutLink} from './variables.js';
+import { displayRestaurants } from './restaurantComponents.js';
 
 //used to check the page the user is currently on
 const currentPath = window.location.pathname;
-
+getRestaurants();
 //gets userdata from current session
 let user = JSON.parse(sessionStorage.getItem('user'));
 console.log(user);
@@ -40,6 +41,9 @@ if (currentPath === '/src/login.html') {
 if (currentPath === '/src/menu.html') {
   console.log('test');
   displayItems();
+}
+if (currentPath === '/src/restaurants.html'){
+  displayRestaurants();
 }
 //placeholder logout
 logoutLink.addEventListener('click', (e) => {

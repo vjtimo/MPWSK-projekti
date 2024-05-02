@@ -18,6 +18,11 @@ async function fetchData(route, options) {
     console.error('Fetch', error);
   }
 }
+const getRestaurants = async () => {
+ const restaurants = await fetchData('api/restaurants');
+ console.log(restaurants);
+ return restaurants;
+}
 
 const registerUser = async (regForm) => {
   const bodyContent = {
@@ -67,4 +72,4 @@ const login = async (loginForm) => {
   }
 };
 
-export {registerUser, login, fetchData};
+export {registerUser, login, fetchData, getRestaurants};
