@@ -1,7 +1,9 @@
+import {fetchData, getCart, addItemsToCart} from './api.js';
 import {url} from './variables.js';
-import {logoutLink, loginLink, isLogged, setLogged} from './variables.js';
 
-let user = JSON.parse(sessionStorage.getItem('user'));
+import {logoutLink, loginLink, isLogged, setLogged} from './variables.js';
+const shoppingCart = document.querySelector('#cart');
+
 const checkSession = async () => {
   if (sessionStorage.getItem('token') && sessionStorage.getItem('user')) {
     try {
@@ -10,7 +12,7 @@ const checkSession = async () => {
           Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
       };
-      const response = await fetch(url + 'api/auth/me', fetchOptions);
+      const response = await fetch(url + 'auth/me', fetchOptions);
       if (!response.ok) {
         return false;
       } else {
@@ -23,18 +25,24 @@ const checkSession = async () => {
     return false;
   }
 };
-const logout = () => {
+const logout = async () => {
   sessionStorage.removeItem('token');
   sessionStorage.removeItem('user');
+
+  const items = JSON.parse(localStorage.getItem('STORED_ORDERS'));
+  await addItemsToCart(items);
+  localStorage.removeItem('STORED_ORDERS');
+  sessionStorage.removeItem('cartId');
   alert('You have logged out');
   window.location.href = '/src/index.html';
   setLogged(false);
 };
-//modifies site based on logged state
+
 const startApp = (logged) => {
   logged ? console.log('logged in') : console.log('not logged in');
   logoutLink.style.display = logged ? 'flex' : 'none';
   loginLink.style.display = logged ? 'none' : 'flex';
+  shoppingCart.style.display = logged ? 'flex' : 'none';
 };
 
 (async () => {

@@ -1,15 +1,20 @@
 'use strict';
 import {fetchData} from './api.js';
 import {addItemToCart} from './shoppingCart.js';
+import {isLogged, setLogged} from './variables.js';
+import {checkSession} from './auth.js';
+
 const displayItems = async () => {
   try {
     const data = await fetchData('pizzas');
-    const div = document.querySelector('#pizzat');
+    const pizzaDiv = document.querySelector('#pizzat');
+    const kebabDiv = document.querySelector('#kebabit');
+    const juomaDiv = document.querySelector('#juomat');
     console.log(data);
-    for (let i = 0; i < data.length; i++) {
-      const name = data[i].nimi;
-      const description = data[i].kuvaus_fi;
-      const price = data[i].hinta;
+    data.forEach((item) => {
+      const name = item.nimi;
+      const description = item.kuvaus_fi;
+      const price = item.hinta;
 
       const link = document.createElement('a');
       link.className = 'link';
@@ -28,14 +33,21 @@ const displayItems = async () => {
           </p>
         </figcaption>
       </figure>
-    </a>
-    `;
+    </a>`;
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        createModal(data[i]);
+        createModal(item);
       });
-      div.appendChild(link);
-    }
+      if (item.kategoria_id === 1) {
+        pizzaDiv.appendChild(link);
+      }
+      if (item.kategoria_id === 2) {
+        kebabDiv.appendChild(link);
+      }
+      if (item.kategoria_id === 3) {
+        juomaDiv.appendChild(link);
+      }
+    });
   } catch (error) {
     console.log(error.message);
   }
@@ -59,7 +71,7 @@ const createModal = (data) => {
   let addToCartbtn = document.querySelector('.addToCart');
   addToCartbtn.addEventListener('click', (e) => {
     e.preventDefault();
-    addItemToCart(data);
+    isLogged() ? addItemToCart(data) : alert('kirjaudu sisään');
   });
   modalDrop.classList.add('visible');
   modal.classList.add('visible');
@@ -71,3 +83,6 @@ const createModal = (data) => {
   });
   modal.style.display = 'flex';
 };
+(async () => {
+  setLogged(await checkSession());
+})();

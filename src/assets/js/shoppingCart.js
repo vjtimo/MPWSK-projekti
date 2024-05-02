@@ -1,17 +1,33 @@
+import {fetchData, getPizzasByIds} from './api.js';
+const getOrderList = () => {
+  if (!localStorage.getItem('STORED_ORDERS')) {
+    localStorage.setItem('ORDERS', JSON.stringify([]));
+  }
+  return JSON.parse(localStorage.getItem('STORED_ORDERS'));
+};
 const cartModal = document.querySelector('#cart-modal');
 const cart = document.querySelector('#products');
 const shoppingCart = document.querySelector('#cart');
 const backDrop = document.querySelector('.modalBackdrop');
 
-const createCart = () => {
+const createCart = async () => {
   console.log(cartModal);
   cart.innerHTML = '';
-  const cartItems = getOrderList();
+  const cartData = getOrderList();
 
-  console.log(cartItems);
+  if (cartData.length > 0) {
+    const productIds = cartData.map((item) => item.id);
 
-  if (cartItems.length > 0) {
-    cartItems.forEach((item) => {
+    const cartItems = await getPizzasByIds(productIds);
+    const combinedCart = cartData.map((cartItem) => {
+      const matchingItem = cartItems.find((item) => item.id === cartItem.id);
+
+      return {
+        ...cartItem,
+        ...matchingItem,
+      };
+    });
+    combinedCart.forEach((item) => {
       const product = document.createElement('div');
       const removeBtn = document.createElement('button');
       const addBtn = document.createElement('button');
@@ -36,8 +52,7 @@ const createCart = () => {
       product.append(removeBtn);
       cart.append(product);
     });
-    const total = document.createElement('p');
-    total.innerText = 'Kokonaishinta: ' + calculateTotal();
+    const total = calculateTotal(combinedCart);
     cart.append(total);
     cart.insertAdjacentHTML(
       'beforeend',
@@ -53,12 +68,6 @@ const createCart = () => {
   }
 };
 
-const getOrderList = () => {
-  if (!localStorage.getItem('STORED_ORDERS')) {
-    localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
-  }
-  return JSON.parse(localStorage.getItem('STORED_ORDERS'));
-};
 const addItemToCart = (data) => {
   let cart = getOrderList();
   const existingItem = cart.find((item) => item.id === data.id);
@@ -66,7 +75,7 @@ const addItemToCart = (data) => {
   if (existingItem) {
     existingItem.quantity = (existingItem.quantity || 1) + 1;
   } else {
-    const newItem = {...data, quantity: 1};
+    const newItem = {id: data.id, quantity: 1};
     cart.push(newItem);
   }
 
@@ -121,15 +130,15 @@ const toggleCart = () => {
   }
 };
 
-const calculateTotal = () => {
-  let cart = getOrderList();
-  console.log(cart);
-  const total = cart.reduce(
+const calculateTotal = (combinedCart) => {
+  console.log('TEST');
+  const totalText = document.createElement('p');
+  const total = combinedCart.reduce(
     (total, item) => item.hinta * item.quantity + total,
     0
   );
-
-  return total;
+  totalText.innerText = 'Kokonaishinta: ' + total;
+  return totalText;
 };
 
 export {createCart, addItemToCart, toggleCart, getOrderList};

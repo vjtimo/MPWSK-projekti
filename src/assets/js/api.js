@@ -55,7 +55,7 @@ const login = async (loginForm) => {
   };
   const response = await fetch(url + 'auth/login', fetchOptions);
   const json = await response.json();
-  console.log(json.user);
+
   if (!json.user) {
     alert(json.error.message);
   } else {
@@ -63,11 +63,11 @@ const login = async (loginForm) => {
     sessionStorage.setItem('token', json.token);
     sessionStorage.setItem('user', JSON.stringify(json.user));
     setLogged(true);
+
     return JSON.parse(sessionStorage.getItem('user'));
   }
 };
 async function getPizzasByIds(ids) {
-  console.log('IDS: ', ids);
   const route = `pizzas/${ids.join(',')}`;
 
   const options = {
@@ -86,4 +86,71 @@ async function getPizzasByIds(ids) {
     console.error('Error fetching pizzas by IDs:', error);
   }
 }
-export {registerUser, login, fetchData, getPizzasByIds};
+const getCart = async (id) => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const response = await fetch(url + `cart/${id}`, fetchOptions);
+  const json = await response.json();
+  console.log(json);
+  if (!json) {
+    alert(json.error.message);
+  } else {
+    localStorage.setItem('STORED_ORDERS', JSON.stringify(json.STORED_ORDERS));
+  }
+  sessionStorage.setItem('cartId', JSON.stringify(json.id));
+};
+const addItemsToCart = async (items) => {
+  const cartId = sessionStorage.getItem('cartId');
+  const body = {
+    cart_id: cartId,
+    items: items,
+  };
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url + `cart`, fetchOptions);
+  const json = await response.json();
+  console.log(json);
+  if (!response.ok) {
+    throw new Error(json.error?.message || 'Failed to add items to cart');
+  }
+};
+const postOrder = async (orderForm) => {
+  console.log(orderForm);
+  const ostoskoriId = sessionStorage.getItem('cartId');
+  const body = {
+    ostoskori: ostoskoriId,
+    ravintola: orderForm.get('restaurants'),
+  };
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url + `order`, fetchOptions);
+  const json = await response.json();
+  console.log(json);
+  if (!response.ok) {
+    throw new Error(json.error?.message || 'Failed to add items to cart');
+  }
+};
+
+export {
+  registerUser,
+  login,
+  fetchData,
+  getPizzasByIds,
+  getCart,
+  addItemsToCart,
+  postOrder,
+};
