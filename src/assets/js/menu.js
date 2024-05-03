@@ -10,7 +10,7 @@ const displayItems = async () => {
     const pizzaDiv = document.querySelector('#pizzat');
     const kebabDiv = document.querySelector('#kebabit');
     const juomaDiv = document.querySelector('#juomat');
-    console.log(data);
+
     data.forEach((item) => {
       const name = item.nimi;
       const description = item.kuvaus_fi;

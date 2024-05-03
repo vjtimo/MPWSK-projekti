@@ -3,9 +3,8 @@ import {setLogged, url} from './variables.js';
 async function fetchData(route, options) {
   try {
     const response = await fetch(url + route, options);
-    console.log(response);
+
     if (response.ok) {
-      console.log('Promise resolved and HTTP status is successful');
       const jsonData = await response.json();
       return jsonData;
     } else {
@@ -24,7 +23,6 @@ const registerUser = async (regForm) => {
     tunnus: new FormData(regForm).get('uname'),
     salasana: new FormData(regForm).get('pass'),
   };
-  console.log(bodyContent);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -34,7 +32,6 @@ const registerUser = async (regForm) => {
   };
   try {
     const result = await fetchData('users/register', fetchOptions);
-    console.log('User registered:', result);
     return result;
   } catch (error) {
     console.error('Registration error:', error.message);
@@ -80,7 +77,6 @@ async function getPizzasByIds(ids) {
   try {
     const pizzas = await fetchData(route, options);
 
-    console.log('Fetched pizzas:', pizzas);
     return pizzas;
   } catch (error) {
     console.error('Error fetching pizzas by IDs:', error);
@@ -95,7 +91,6 @@ const getCart = async (id) => {
   };
   const response = await fetch(url + `cart/${id}`, fetchOptions);
   const json = await response.json();
-  console.log(json);
   if (!json) {
     alert(json.error.message);
   } else {
@@ -118,13 +113,12 @@ const addItemsToCart = async (items) => {
   };
   const response = await fetch(url + `cart`, fetchOptions);
   const json = await response.json();
-  console.log(json);
+
   if (!response.ok) {
     throw new Error(json.error?.message || 'Failed to add items to cart');
   }
 };
 const postOrder = async (orderForm) => {
-  console.log(orderForm);
   const ostoskoriId = sessionStorage.getItem('cartId');
   const body = {
     ostoskori: ostoskoriId,
@@ -139,7 +133,9 @@ const postOrder = async (orderForm) => {
   };
   const response = await fetch(url + `order`, fetchOptions);
   const json = await response.json();
-  console.log(json);
+  sessionStorage.setItem('cartId', json.cartId);
+  localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
+
   if (!response.ok) {
     throw new Error(json.error?.message || 'Failed to add items to cart');
   }

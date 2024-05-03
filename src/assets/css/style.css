@@ -542,7 +542,115 @@ a:hover {
   height: 2rem;
   margin: 4px;
 }
-@media only screen and (max-width: 600px) {
+#orders {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#orderList a {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0;
+  width: 100%;
+}
+#orderList li {
+  margin: 1rem;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: #ada6a6;
+  border-style: solid;
+  width: 100%;
+  max-width: 700px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#orderList {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50%;
+}
+#orderList img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px;
+}
+#orderList h3 {
+  margin: 0;
+  padding: 5px;
+}
+#orderList p {
+  margin: 0;
+  padding: 5px;
+}
+.customerInfo {
+  font-weight: bold;
+  display: flex;
+  width: 100%;
+  padding: 1rem 0;
+  flex-direction: column;
+  align-items: center;
+}
+#orderList button {
+  height: 3rem;
+  font-weight: bold;
+  width: 96%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background-color: #cfdf75;
+}
+.orderId {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.orderInfo {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 30%;
+  padding: 4px;
+  flex-direction: row;
+  border-width: 0 1px;
+
+  border-color: #ada6a6;
+}
+
+.status {
+  display: flex;
+  width: 100%;
+  padding: 0 0 0 0;
+  justify-content: center;
+  align-items: center;
+  border-width: 0 0px 1px 0px;
+
+  border-color: #ada6a6;
+  border-style: solid;
+}
+.dot {
+  height: 20px;
+  width: 20px;
+  margin: 8px;
+  background-color: #da3939;
+  border-radius: 50%;
+  display: inline-block;
+}
+@media only screen and (max-width: 800px) {
+  #orderList li {
+    width: 95%;
+    margin: 1rem auto;
+  }
+  #orderList {
+    padding: 0;
+    width: 100%;
+  }
+  #orderList a {
+    width: 100%;
+  }
   main {
     width: 100%;
   }

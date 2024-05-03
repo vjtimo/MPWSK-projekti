@@ -1,4 +1,4 @@
-import {fetchData, getCart, addItemsToCart} from './api.js';
+import {addItemsToCart} from './api.js';
 import {url} from './variables.js';
 
 import {logoutLink, loginLink, isLogged, setLogged} from './variables.js';

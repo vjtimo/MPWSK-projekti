@@ -12,8 +12,8 @@ loginForm.addEventListener('submit', async (e) => {
   const loginResult = await login(loginForm);
   console.log(loginResult);
   if (loginResult) {
-    const cart = await getCart(loginResult.id);
-    console.log(cart);
+    await getCart(loginResult.id);
+
     window.location.href = '/src/index.html';
   } else {
     console.log('Failed to log in');

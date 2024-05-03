@@ -31,6 +31,7 @@ if (products) {
     e.preventDefault();
     const orderData = new FormData(orderForm);
     await postOrder(orderData);
+    window.location.href = '/src/index.html';
   });
   combinedCart.forEach((item) => {
     productsDiv.innerHTML += `
