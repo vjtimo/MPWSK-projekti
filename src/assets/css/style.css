@@ -548,7 +548,7 @@ a:hover {
   flex-wrap: wrap;
   justify-content: center;
 }
-#orderList a {
+.order {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -570,9 +570,10 @@ a:hover {
 
 #orderList {
   margin: 0;
+  padding: 0;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
   width: 50%;
 }
 #orderList img {
