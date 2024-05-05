@@ -593,7 +593,7 @@ a:hover {
   font-weight: bold;
   display: flex;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   flex-direction: column;
   align-items: center;
 }
@@ -609,17 +609,6 @@ a:hover {
   font-size: 15px;
   font-weight: lighter;
 }
-.orderInfo {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  width: 30%;
-  padding: 4px;
-  flex-direction: row;
-  border-width: 0 1px;
-
-  border-color: #ada6a6;
-}
 
 .status {
   display: flex;
@@ -632,13 +621,27 @@ a:hover {
   border-color: #ada6a6;
   border-style: solid;
 }
-.dot {
+.redDot {
   height: 20px;
   width: 20px;
   margin: 8px;
   background-color: #da3939;
   border-radius: 50%;
   display: inline-block;
+}
+.yellowDot {
+  height: 20px;
+  width: 20px;
+  margin: 8px;
+  background-color: #fcca43;
+  border-radius: 50%;
+  display: inline-block;
+}
+#toastContainer {
+  position: fixed;
+  top: 3.5rem;
+  right: 30%;
+  transform: translate(50%, 50%);
 }
 @media only screen and (max-width: 800px) {
   #orderList li {

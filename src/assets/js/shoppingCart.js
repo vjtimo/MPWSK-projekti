@@ -1,4 +1,4 @@
-import {fetchData, getPizzasByIds} from './api.js';
+import {fetchData, getPizzasByIds, addItemsToCart} from './api.js';
 const getOrderList = () => {
   return JSON.parse(localStorage.getItem('STORED_ORDERS'));
 };
@@ -167,6 +167,7 @@ const toggleCart = () => {
     backDrop.classList.add('visible');
     backDrop.addEventListener('click', toggleCart, {once: true});
   } else {
+    addItemsToCart();
     cartModal.addEventListener(
       'transitionend',
       () => {
@@ -179,4 +180,5 @@ const toggleCart = () => {
     backDrop.classList.remove('visible');
   }
 };
+
 export {createCart, addItemToCart, toggleCart, getOrderList};

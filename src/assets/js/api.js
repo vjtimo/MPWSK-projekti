@@ -96,9 +96,11 @@ const getCart = async (id) => {
   } else {
     localStorage.setItem('STORED_ORDERS', JSON.stringify(json.STORED_ORDERS));
   }
+  console.log(json);
   sessionStorage.setItem('cartId', JSON.stringify(json.id));
 };
-const addItemsToCart = async (items) => {
+const addItemsToCart = async () => {
+  const items = JSON.parse(localStorage.getItem('STORED_ORDERS'));
   const cartId = sessionStorage.getItem('cartId');
   const body = {
     cart_id: cartId,
@@ -120,6 +122,7 @@ const addItemsToCart = async (items) => {
 };
 const postOrder = async (orderForm) => {
   const ostoskoriId = sessionStorage.getItem('cartId');
+  console.log(ostoskoriId);
   const body = {
     ostoskori: ostoskoriId,
     ravintola: orderForm.get('restaurants'),
@@ -133,11 +136,49 @@ const postOrder = async (orderForm) => {
   };
   const response = await fetch(url + `order`, fetchOptions);
   const json = await response.json();
+  console.log(json);
   sessionStorage.setItem('cartId', json.cartId);
   localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
-
+  console.log(response);
   if (!response.ok) {
-    throw new Error(json.error?.message || 'Failed to add items to cart');
+    throw new Error(json.error?.message || 'Tilausta ei voitu viedä loppuun');
+  }
+};
+
+const updateOrderStatus = async (id, status) => {
+  const body = {
+    id: id,
+    status: status,
+  };
+  const fetchOptions = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url + `order/status`, fetchOptions);
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.error?.message || 'Failed to update status');
+  }
+};
+const getOrderById = async (id) => {
+  const route = `order/${id}`;
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const result = await fetchData(route, options);
+
+    return result;
+  } catch (error) {
+    console.error('Error fetching pizzas by IDs:', error);
   }
 };
 export {
@@ -148,4 +189,6 @@ export {
   getCart,
   addItemsToCart,
   postOrder,
+  updateOrderStatus,
+  getOrderById,
 };
