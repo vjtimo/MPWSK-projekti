@@ -13,7 +13,7 @@ const displayItems = async () => {
 
     data.forEach((item) => {
       const name = item.nimi;
-      const description = item.kuvaus_fi;
+      const description = item.ainekset;
       const price = item.hinta;
 
       const link = document.createElement('a');
@@ -56,7 +56,7 @@ displayItems();
 
 const createModal = (data) => {
   const modalDrop = document.querySelector('.modalBackdrop');
-  const {nimi, kuvaus_fi, hinta} = data;
+  const {nimi, ainekset, hinta} = data;
   const modal = document.querySelector('#pizza-modal');
   modal.innerHTML = `<div id ="modal-content">
   <img src="pictures/pizza.jpg" alt="image of pizza"></img>
@@ -64,7 +64,7 @@ const createModal = (data) => {
   <div id="modal-tayte">
   <span class="close-button">&times;</span>
     <h2>${nimi}</h2>
-    <p>${kuvaus_fi}</p>
+    <p>${ainekset}</p>
     <h3>${hinta}<h3>
       <button class="addToCart">Lisää ostoskoriin</button>
   </div>`;
