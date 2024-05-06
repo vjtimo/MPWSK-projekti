@@ -3,9 +3,8 @@ import {setLogged, url} from './variables.js';
 async function fetchData(route, options) {
   try {
     const response = await fetch(url + route, options);
-    console.log(response);
+
     if (response.ok) {
-      console.log('Promise resolved and HTTP status is successful');
       const jsonData = await response.json();
       return jsonData;
     } else {
@@ -24,7 +23,6 @@ const registerUser = async (regForm) => {
     tunnus: new FormData(regForm).get('uname'),
     salasana: new FormData(regForm).get('pass'),
   };
-  console.log(bodyContent);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -33,8 +31,7 @@ const registerUser = async (regForm) => {
     body: JSON.stringify(bodyContent),
   };
   try {
-    const result = await fetchData('api/users/register', fetchOptions);
-    console.log('User registered:', result);
+    const result = await fetchData('users/register', fetchOptions);
     return result;
   } catch (error) {
     console.error('Registration error:', error.message);
@@ -54,9 +51,9 @@ const login = async (loginForm) => {
     },
     body: JSON.stringify(bodyContent),
   };
-  const response = await fetch(url + 'api/auth/login', fetchOptions);
+  const response = await fetch(url + 'auth/login', fetchOptions);
   const json = await response.json();
-  console.log(json.user);
+
   if (!json.user) {
     alert(json.error.message);
   } else {
@@ -64,8 +61,93 @@ const login = async (loginForm) => {
     sessionStorage.setItem('token', json.token);
     sessionStorage.setItem('user', JSON.stringify(json.user));
     setLogged(true);
+
     return JSON.parse(sessionStorage.getItem('user'));
   }
 };
+async function getPizzasByIds(ids) {
+  const route = `pizzas/${ids.join(',')}`;
 
-export {registerUser, login, fetchData};
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const pizzas = await fetchData(route, options);
+
+    return pizzas;
+  } catch (error) {
+    console.error('Error fetching pizzas by IDs:', error);
+  }
+}
+const getCart = async (id) => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const response = await fetch(url + `cart/${id}`, fetchOptions);
+  const json = await response.json();
+  if (!json) {
+    alert(json.error.message);
+  } else {
+    localStorage.setItem('STORED_ORDERS', JSON.stringify(json.STORED_ORDERS));
+  }
+  sessionStorage.setItem('cartId', JSON.stringify(json.id));
+};
+const addItemsToCart = async (items) => {
+  const cartId = sessionStorage.getItem('cartId');
+  const body = {
+    cart_id: cartId,
+    items: items,
+  };
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url + `cart`, fetchOptions);
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.error?.message || 'Failed to add items to cart');
+  }
+};
+const postOrder = async (orderForm) => {
+  const ostoskoriId = sessionStorage.getItem('cartId');
+  const body = {
+    ostoskori: ostoskoriId,
+    ravintola: orderForm.get('restaurants'),
+  };
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url + `order`, fetchOptions);
+  const json = await response.json();
+  sessionStorage.setItem('cartId', json.cartId);
+  localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
+
+  if (!response.ok) {
+    throw new Error(json.error?.message || 'Failed to add items to cart');
+  }
+};
+
+export {
+  registerUser,
+  login,
+  fetchData,
+  getPizzasByIds,
+  getCart,
+  addItemsToCart,
+  postOrder,
+};

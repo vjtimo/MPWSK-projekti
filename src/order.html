@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="fi">
   <head>
     <title>Pizzeria</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <script type="module" src="assets/js/login.js"></script>
+    <script type="module" src="assets/js/order.js"></script>
     <script type="module" src="assets/js/auth.js"></script>
     <script type="module" src="assets/js/navigation.js"></script>
   </head>
@@ -26,7 +26,7 @@
               </ul>
             </div>
             <div id="nav2">
-              <a id="login" style="display: none" href="login.html"
+              <a id="login" href="login.html" style="display: none"
                 ><img src="icons/user.svg" /><span>Login</span></a
               >
               <a id="logout" style="display: none"
@@ -39,30 +39,27 @@
           </nav>
         </div>
       </header>
-      <div id="loginpage">
-        <div id="loginwrapper">
-          <h2>Kirjaudu</h2>
-          <form id="login-form">
-            <label for="uname">Username</label><br />
-            <input type="text" id="uname" name="uname" /><br />
-            <label for="pass">Password</label><br />
-            <input type="password" id="pass" name="pass" />
-            <button type="submit">Login</button>
-          </form>
-          <h2>Rekisteröidy</h2>
+      <div id="main-content">
+        <main>
+          <div id="deliveryWrapper">
+            <div id="confTuotteet">
+              <h2>Tuotteet</h2>
+            </div>
 
-          <form id="register">
-            <label for="uname">Username</label><br />
-            <input type="text" id="uname" name="uname" /><br />
-            <label for="pass">Password</label><br />
-            <input type="password" id="pass" name="pass" />
-            <button type="submit">Register</button>
-          </form>
-        </div>
-
-        <aside>
-          <img src="pictures/pizza.jpg" />
-        </aside>
+            <div id="delivery">
+              <form id="orderForm">
+                <h2>Tilauksen tiedot</h2>
+                <label for="uname">Etunimi ja sukunimi</label>
+                <input type="text" id="name" name="name" />
+                <label for="pass">Puhelin</label>
+                <input type="text" id="phone" name="phone" />
+                <label for="address">Toimitusosoite</label>
+                <select id="restaurantSelect" name="restaurants"></select>
+                <button type="submit">Tilaa</button>
+              </form>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
     <div class="modalBackdrop"></div>

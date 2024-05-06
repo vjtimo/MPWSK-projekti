@@ -1,18 +1,24 @@
+'use strict';
 import {fetchData} from './api.js';
+import {addItemToCart} from './shoppingCart.js';
+import {isLogged, setLogged} from './variables.js';
+import {checkSession} from './auth.js';
+
 const displayItems = async () => {
   try {
-    const data = await fetchData('api/pizzas');
+    const data = await fetchData('pizzas');
     const pizzaDiv = document.querySelector('#pizzat');
     const kebabDiv = document.querySelector('#kebabit');
     const juomaDiv = document.querySelector('#juomat');
-    console.log(data);
-    for (let i = 0; i < data.length; i++) {
-      const name = data[i].nimi;
-      const description = data[i].kuvaus_fi;
-      const price = data[i].hinta;
+
+    data.forEach((item) => {
+      const name = item.nimi;
+      const description = item.kuvaus_fi;
+      const price = item.hinta;
 
       const link = document.createElement('a');
       link.className = 'link';
+
       link.innerHTML = `
       <figure>
         <img src="pictures/pizza.jpg" alt="Pizza" />
@@ -27,26 +33,27 @@ const displayItems = async () => {
           </p>
         </figcaption>
       </figure>
-    </a>
-    `;
+    </a>`;
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        createModal(data[i]);
+        createModal(item);
       });
-      if (data[i].kategoria_id === 1) {
+      if (item.kategoria_id === 1) {
         pizzaDiv.appendChild(link);
       }
-      if (data[i].kategoria_id === 2) {
+      if (item.kategoria_id === 2) {
         kebabDiv.appendChild(link);
       }
-      if (data[i].kategoria_id === 3) {
+      if (item.kategoria_id === 3) {
         juomaDiv.appendChild(link);
       }
-    }
+    });
   } catch (error) {
     console.log(error.message);
   }
 };
+displayItems();
+
 const createModal = (data) => {
   const modalDrop = document.querySelector('.modalBackdrop');
   const {nimi, kuvaus_fi, hinta} = data;
@@ -59,22 +66,23 @@ const createModal = (data) => {
     <h2>${nimi}</h2>
     <p>${kuvaus_fi}</p>
     <h3>${hinta}<h3>
-      <button>Lisää ostoskoriin</button>
+      <button class="addToCart">Lisää ostoskoriin</button>
   </div>`;
-  modalDrop.style.display = 'block';
+  let addToCartbtn = document.querySelector('.addToCart');
+  addToCartbtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    isLogged() ? addItemToCart(data) : alert('kirjaudu sisään');
+  });
+  modalDrop.classList.add('visible');
+  modal.classList.add('visible');
   const close = document.querySelector('.close-button');
 
   close.addEventListener('click', (e) => {
     modal.style.display = 'none';
-    modalDrop.style.display = 'none';
+    modalDrop.classList.remove('visible');
   });
   modal.style.display = 'flex';
 };
-const createCart = (modal) => {
-  console.log(modal);
-  const cart = document.createElement('aside');
-
-  cart.innerHTML = '<h2>Shopping Cart</h2>';
-  modal.append(cart);
-};
-export {displayItems, createCart};
+(async () => {
+  setLogged(await checkSession());
+})();
