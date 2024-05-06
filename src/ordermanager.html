@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Pizzeria</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/menuCss.css" />
+    <script type="module" src="assets/js/orderManagement.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/navigation.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div id="header">
+          <nav id="main-nav">
+            <div id="links">
+              <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="restaurants.html">Ravintolat</a></li>
+                <li><a href="about.html">Tietoa</a></li>
+              </ul>
+            </div>
+            <div id="nav2">
+              <a id="login" href="login.html" style="display: none"
+                ><img src="icons/user.svg" /><span>Login</span></a
+              >
+              <a id="logout" style="display: none"
+                ><img src="icons/user.svg" /><span>Logout</span></a
+              >
+              <a id="cart"
+                ><img src="icons/shopping-cart.svg" /><span>cart</span></a
+              >
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div id="main-content">
+        <main>
+          <div id="orders">
+            <ul id="orderList"></ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div id="toastContainer"></div>
+  </body>
+</html>

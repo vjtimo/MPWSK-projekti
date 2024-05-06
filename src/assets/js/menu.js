@@ -4,7 +4,7 @@ import {addItemToCart} from './shoppingCart.js';
 import {isLogged, setLogged} from './variables.js';
 import {checkSession} from './auth.js';
 
-const displayItems = async () => {
+const displayItems = async (admin) => {
   try {
     const data = await fetchData('pizzas');
     const pizzaDiv = document.querySelector('#pizzat');
@@ -32,8 +32,7 @@ const displayItems = async () => {
             ${description}
           </p>
         </figcaption>
-      </figure>
-    </a>`;
+      </figure>`;
       link.addEventListener('click', (e) => {
         e.preventDefault();
         createModal(item);
@@ -47,12 +46,22 @@ const displayItems = async () => {
       if (item.kategoria_id === 3) {
         juomaDiv.appendChild(link);
       }
+      if (admin) {
+        console.log('yolo');
+        const DeleteButton = document.createElement('button');
+        DeleteButton.innerText = 'delete product';
+        DeleteButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          link.remove();
+        });
+        link.append(DeleteButton);
+      }
     });
   } catch (error) {
     console.log(error.message);
   }
 };
-displayItems();
 
 const createModal = (data) => {
   const modalDrop = document.querySelector('.modalBackdrop');
@@ -76,13 +85,29 @@ const createModal = (data) => {
   modalDrop.classList.add('visible');
   modal.classList.add('visible');
   const close = document.querySelector('.close-button');
+  close.addEventListener('click', closeModal);
+  modalDrop.addEventListener('click', closeModal);
 
-  close.addEventListener('click', (e) => {
-    modal.style.display = 'none';
-    modalDrop.classList.remove('visible');
-  });
   modal.style.display = 'flex';
 };
+const closeModal = (e) => {
+  const modalDrop = document.querySelector('.modalBackdrop');
+  const modal = document.querySelector('#pizza-modal');
+  const close = document.querySelector('.close-button');
+  modalDrop.removeEventListener('click', closeModal);
+  close.removeEventListener('click', closeModal);
+  modal.style.display = 'none';
+  modalDrop.classList.remove('visible');
+};
+
 (async () => {
-  setLogged(await checkSession());
+  const {valid, role} = await checkSession();
+  console.log(role);
+  if (valid && role === 'admin') {
+    displayItems(true);
+  } else {
+    displayItems(false);
+  }
+  console.log(valid);
+  setLogged(valid);
 })();

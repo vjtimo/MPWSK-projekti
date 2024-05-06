@@ -1,8 +1,7 @@
 import {fetchData, updateOrderStatus, getOrderById} from './api.js';
-
 const createButton = (id, status) => {
   const button = document.createElement('button');
-  button.innerText = status === 1 ? 'Vastaanota' : 'Toimita';
+  button.innerText = status === 3 ? 'Aloita toimitus' : 'Valmis';
   console.log(status);
   button.addEventListener(
     'click',
@@ -11,9 +10,9 @@ const createButton = (id, status) => {
       await updateOrderStatus(id, status);
 
       await renderOrderById(id, e.target);
-      status === 1
-        ? showToast('Tilaus otettu onnistuneesti vastaan')
-        : showToast('Tilaus lähetettu toimitukseen');
+      status === 2
+        ? showToast('Tilauksen toimitus aloitettu')
+        : showToast('Tilaus Toimitettu');
     },
     {once: true}
   );
@@ -23,13 +22,10 @@ const renderOrders = async () => {
   const orderList = document.querySelector('#orderList');
 
   const orderData = await fetchData('order');
-  const ordersToDo = orderData.filter((item) => item.statusId < 3);
   const ordersToDeliver = orderData.filter((item) => item.statusId > 2);
-  console.log(ordersToDo);
-  console.log(ordersToDeliver);
-  if (ordersToDo.length > 0) {
+  if (ordersToDeliver.length > 0) {
     orderData.forEach((order) => {
-      if (order.statusId < 3) {
+      if (order.statusId > 2 && order.statusId < 4) {
         const dateObj = new Date(order.tilausaika);
         const time = dateObj.toTimeString().split(' ')[0];
 
@@ -46,7 +42,7 @@ const renderOrders = async () => {
 
         const statusDot = document.createElement('span');
 
-        statusDot.className = order.statusId === 1 ? 'redDot' : 'yellowDot';
+        statusDot.className = order.statusId === 3 ? 'redDot' : 'yellowDot';
 
         const statusHeading = document.createElement('h4');
         statusHeading.innerText = `${order.statusText}`;
@@ -78,7 +74,7 @@ const renderOrderById = async (id, button) => {
   console.log(order);
 
   const listItem = document.querySelector(`#id${id}`);
-  if (order.statusId > 2) {
+  if (order.statusId > 4) {
     listItem.remove();
     const orderList = document.querySelector('#orderList');
     console.log('TESTTT', orderList.hasChildNodes());
@@ -93,13 +89,13 @@ const renderOrderById = async (id, button) => {
   statusDot.className = 'yellowDot';
   const statusText = listItem.querySelector('.status h4');
   statusText.innerText = order.statusText;
-  button.innerText = 'Toimita';
+  button.innerText = 'Valmis';
   button.addEventListener(
     'click',
     async (e) => {
       e.preventDefault();
       await updateOrderStatus(id, order.statusId);
-      showToast('Tilaus lähetettu toimitukseen');
+      showToast('Tilaus toimitettu asiakkaalle');
       renderOrderById(id, e.target);
     },
     {once: true}
@@ -124,7 +120,3 @@ const showToast = (message) => {
   }, 2000);
 };
 renderOrders();
-
-/* SQL FOR TEsTING
-UPDATE tilaus
-SET tilaId = 1;*/

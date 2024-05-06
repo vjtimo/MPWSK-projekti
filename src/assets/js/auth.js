@@ -13,10 +13,13 @@ const checkSession = async () => {
         },
       };
       const response = await fetch(url + 'auth/me', fetchOptions);
+      const json = await response.json();
       if (!response.ok) {
         return false;
       } else {
-        return true;
+        const role = json.user.rooli;
+
+        return {valid: true, role: role}; // Session is valid, return the role
       }
     } catch (e) {
       console.log(e.message);
@@ -28,9 +31,7 @@ const checkSession = async () => {
 const logout = async () => {
   sessionStorage.removeItem('token');
   sessionStorage.removeItem('user');
-
-  const items = JSON.parse(localStorage.getItem('STORED_ORDERS'));
-  await addItemsToCart(items);
+  await addItemsToCart();
   localStorage.removeItem('STORED_ORDERS');
   sessionStorage.removeItem('cartId');
   alert('You have logged out');
@@ -46,7 +47,8 @@ const startApp = (logged) => {
 };
 
 (async () => {
-  setLogged(await checkSession());
+  const {valid, role} = await checkSession();
+  setLogged(valid);
   isLogged() ? startApp(true) : startApp(false);
 })();
 
