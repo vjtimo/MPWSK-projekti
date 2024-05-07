@@ -5,7 +5,7 @@
   <title>Pizzeria</title>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <script type="module" src="assets/js/login.js"></script>
+  <script type="module" src="assets/js/register.js"></script>
   <script type="module" src="assets/js/auth.js"></script>
   <script type="module" src="assets/js/navigation.js"></script>
 </head>
@@ -33,15 +33,25 @@
     </header>
     <div id="loginpage">
       <div id="loginwrapper">
-        <h2>Kirjaudu</h2>
-        <form id="login-form">
+        <h2>Rekisteröidy</h2>
+
+        <form id="register">
           <label for="uname">Username</label><br />
           <input type="text" id="uname" name="uname" /><br />
           <label for="pass">Password</label><br />
           <input type="password" id="pass" name="pass" />
-          <button type="submit">Login</button>
+          <label for="fname">Etunimi</label><br />
+          <input type="text" id="fname" name="fname" /><br />
+          <label for="lname">Sukunimi</label><br />
+          <input type="text" id="lname" name="lname" /><br />
+          <label for="street">Katuosoite</label><br />
+          <input type="text" id="street" name="street" /><br />
+          <label for="postn">Postinumero</label><br />
+          <input type="number" id="postn" name="postn" /><br />
+          <label for="posto">Postitoimipaikka</label><br />
+          <input type="text" id="posto" name="posto" /><br />
+          <button type="submit">Register</button>
         </form>
-        <a href="register.html">Rekisteröi uusi tunnus</a>
       </div>
 
       <aside>
