@@ -22,7 +22,18 @@ const registerUser = async (regForm) => {
   const bodyContent = {
     tunnus: new FormData(regForm).get('uname'),
     salasana: new FormData(regForm).get('pass'),
+
+    email: new FormData(regForm).get('email'),
+    puhelin: new FormData(regForm).get('phone'),
+    etunimi: new FormData(regForm).get('fname'),
+    sukunimi: new FormData(regForm).get('lname'),
+    katuosoite: new FormData(regForm).get('street'),
+    postinumero: new FormData(regForm).get('zip'),
+    postitoimipaikka: new FormData(regForm).get('city'),
   };
+
+  console.log(bodyContent);
+
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -55,6 +66,7 @@ const login = async (loginForm) => {
     tunnus: new FormData(loginForm).get('uname'),
     salasana: new FormData(loginForm).get('pass'),
   };
+  console.log(bodyContent);
   const fetchOptions = {
     method: 'POST',
     headers: {

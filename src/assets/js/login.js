@@ -1,15 +1,6 @@
 import {login, registerUser, getCart} from './api.js';
 
-const regForm = document.querySelector('#register');
 const loginForm = document.querySelector('#login-form');
-regForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  try {
-    await registerUser(regForm);
-  } catch (e) {
-    displayErrors(e);
-  }
-});
 
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
