@@ -22,7 +22,18 @@ const registerUser = async (regForm) => {
   const bodyContent = {
     tunnus: new FormData(regForm).get('uname'),
     salasana: new FormData(regForm).get('pass'),
+
+    email: new FormData(regForm).get('email'),
+    puhelin: new FormData(regForm).get('phone'),
+    etunimi: new FormData(regForm).get('fname'),
+    sukunimi: new FormData(regForm).get('lname'),
+    katuosoite: new FormData(regForm).get('street'),
+    postinumero: new FormData(regForm).get('zip'),
+    postitoimipaikka: new FormData(regForm).get('city'),
   };
+
+  console.log(bodyContent);
+
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -31,7 +42,8 @@ const registerUser = async (regForm) => {
     body: JSON.stringify(bodyContent),
   };
   try {
-    const result = await fetchData('users/register', fetchOptions);
+    const result = await fetch(url + 'users/register', fetchOptions);
+    console.log(result);
     return result;
   } catch (error) {
     console.error('Registration error:', error.message);
