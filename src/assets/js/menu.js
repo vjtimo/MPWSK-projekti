@@ -61,6 +61,9 @@ const displayItems = async (admin) => {
   } catch (error) {
     console.log(error.message);
   }
+  if (admin) {
+    return;
+  }
 };
 
 const createModal = (data) => {

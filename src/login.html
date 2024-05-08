@@ -45,8 +45,10 @@
           <form id="login-form">
             <label for="uname">Username</label><br />
             <input type="text" id="uname" name="uname" /><br />
+
             <label for="pass">Password</label><br />
             <input type="password" id="pass" name="pass" />
+            <span class="error-message" id="login-error"></span>
             <button type="submit">Login</button>
           </form>
           <h2>Rekisteröidy</h2>
@@ -54,8 +56,10 @@
           <form id="register">
             <label for="uname">Username</label><br />
             <input type="text" id="uname" name="uname" /><br />
+            <span class="error-message" id="tunnus-error"></span>
             <label for="pass">Password</label><br />
             <input type="password" id="pass" name="pass" />
+            <span class="error-message" id="salasana-error"></span>
             <button type="submit">Register</button>
           </form>
         </div>

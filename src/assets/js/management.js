@@ -105,6 +105,8 @@ const renderOrderById = async (id, button) => {
     {once: true}
   );
 };
+
+//provided by chatGPT
 const showToast = (message) => {
   const toast = document.createElement('div');
   toast.innerText = message;

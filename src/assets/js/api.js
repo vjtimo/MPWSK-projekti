@@ -14,7 +14,7 @@ async function fetchData(route, options) {
       throw new Error(response.status);
     }
   } catch (error) {
-    console.error('Fetch', error);
+    throw error;
   }
 }
 
@@ -31,10 +31,22 @@ const registerUser = async (regForm) => {
     body: JSON.stringify(bodyContent),
   };
   try {
-    const result = await fetchData('users/register', fetchOptions);
+    const result = await fetch(url + 'users/register', fetchOptions);
+    if (!result.ok) {
+      if (result.status === 409) {
+        const json = await result.json();
+        const errorSpan = document.querySelector('#tunnus-error');
+        errorSpan.innerText = json.error.message;
+        return;
+      }
+      if (result.status === 400) {
+        const json = await result.json();
+        throw new Error(json.error.message);
+      }
+    }
     return result;
   } catch (error) {
-    console.error('Registration error:', error.message);
+    throw error;
   }
 };
 
@@ -50,18 +62,25 @@ const login = async (loginForm) => {
     },
     body: JSON.stringify(bodyContent),
   };
-  const response = await fetch(url + 'auth/login', fetchOptions);
-  const json = await response.json();
-
-  if (!json.user) {
-    alert(json.error.message);
-  } else {
-    // save token and user
+  try {
+    const response = await fetch(url + 'auth/login', fetchOptions);
+    if (!response.ok) {
+      if (response.status === 401) {
+        const json = await response.json();
+        const errorSpan = document.querySelector('#login-error');
+        errorSpan.innerText = json.error.message;
+        return;
+      }
+    }
+    const json = await response.json();
     sessionStorage.setItem('token', json.token);
     sessionStorage.setItem('user', JSON.stringify(json.user));
     setLogged(true);
 
     return JSON.parse(sessionStorage.getItem('user'));
+  } catch (e) {
+    console.error('Error: ', e.message);
+    return;
   }
 };
 async function getPizzasByIds(ids) {
