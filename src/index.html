@@ -1,169 +1,163 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/menuCss.css" />
-    <script type="module" src="assets/js/index.js"></script>
-    <script type="module" src="assets/js/auth.js"></script>
-    <script type="module" src="assets/js/navigation.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
 
-  <body>
-    <div id="container">
-      <header>
-        <div id="header">
-          <nav id="main-nav">
-            <div id="links">
-              <ul>
-                <li><a href="index.html">Etusivu</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="restaurants.html">Ravintolat</a></li>
-                <li><a href="about.html">Tietoa</a></li>
-              </ul>
-            </div>
-            <div id="nav2">
-              <a id="login" style="display: none" href="login.html"
-                ><img src="icons/user.svg" /><span>Login</span>
-              </a>
-              <a id="logout" style="display: none"
-                ><img src="icons/user.svg" /><span>Logout</span></a
-              >
-              <a id="cart"
-                ><img src="icons/shopping-cart.svg" /><span>cart</span></a
-              >
-            </div>
-          </nav>
-        </div>
-      </header>
-      <div class="slideshow-container">
-        <div class="mySlides fade">
-          <img
-            src="https://www.southernliving.com/thmb/3x3cJaiOvQ8-3YxtMQX0vvh1hQw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2652401_QFSSL_SupremePizza_00072-d910a935ba7d448e8c7545a963ed7101.jpg"
-            alt="Photo 2"
-          />
-        </div>
+<head>
+  <title>Pizzeria</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/menuCss.css" />
+  <script type="module" src="assets/js/index.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+  <script type="module" src="assets/js/navigation.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-        <div class="mySlides fade">
-          <img
-            src="https://www.thespruceeats.com/thmb/2GoDt7juuaU7lxtQDq-_IjEr6t8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-our-favorite-simple-green-salad-recipe-7370448-hero-01-4ca9788a0a3c4d53b70f1d07f8382b7f.jpg"
-            alt="Photo 3"
-          />
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<body>
+  <div id="container">
+    <header>
+      <div id="header">
+        <nav id="main-nav">
+          <div id="links">
+            <ul>
+              <li><a href="index.html">Etusivu</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="restaurants.html">Ravintolat</a></li>
+            </ul>
+          </div>
+          <div id="nav2">
+            <a id="login" style="display: none" href="login.html"><img src="icons/user.svg" /><span>Login</span>
+            </a>
+            <a id="logout" style="display: none"><img src="icons/user.svg" /><span>Logout</span></a>
+            <a id="cart"><img src="icons/shopping-cart.svg" /><span>cart</span></a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img
+          src="https://www.southernliving.com/thmb/3x3cJaiOvQ8-3YxtMQX0vvh1hQw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2652401_QFSSL_SupremePizza_00072-d910a935ba7d448e8c7545a963ed7101.jpg"
+          alt="Photo 2" />
       </div>
 
-      <div id="main-content">
-        <main>
-          <h2 class="title">Suosituimmat</h2>
-          <div id="menu">
-            <div id="kebabit" class="menu-categ">
-              <a href="menu.html" class="link">
-                <figure>
-                  <img src="pictures/pizza.jpg" alt="Pizza" />
+      <div class="mySlides fade">
+        <img
+          src="https://www.thespruceeats.com/thmb/2GoDt7juuaU7lxtQDq-_IjEr6t8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-our-favorite-simple-green-salad-recipe-7370448-hero-01-4ca9788a0a3c4d53b70f1d07f8382b7f.jpg"
+          alt="Photo 3" />
+      </div>
 
-                  <figcaption>
-                    <div class="figure-header">
-                      <h3>Pizzanimi</h3>
-                      <p>13,90€</p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Commodi consectetur facere similique placeat repellat
-                      expedita distinctio modi omnis ab consequatur in sunt
-                      reiciendis non, perspiciatis voluptates rerum eligendi
-                      laborum voluptatem.
-                    </p>
-                  </figcaption>
-                </figure>
-              </a>
-              <a href="menu.html" class="link">
-                <figure>
-                  <img src="pictures/pizza.jpg" alt="Pizza" />
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 
-                  <figcaption>
-                    <div class="figure-header">
-                      <h3>Pizzanimi</h3>
-                      <p>13,90€</p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Commodi consectetur facere similique placeat repellat
-                      expedita distinctio modi omnis ab consequatur in sunt
-                      reiciendis non, perspiciatis voluptates rerum eligendi
-                      laborum voluptatem.
-                    </p>
-                  </figcaption>
-                </figure>
-              </a>
-              <a href="menu.html" class="link">
-                <figure>
-                  <img src="pictures/pizza.jpg" alt="Pizza" />
-
-                  <figcaption>
-                    <div class="figure-header">
-                      <h3>Pizzanimi</h3>
-                      <p>13,90€</p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Commodi consectetur facere similique placeat repellat
-                      expedita distinctio modi omnis ab consequatur in sunt
-                      reiciendis non, perspiciatis voluptates rerum eligendi
-                      laborum voluptatem.
-                    </p>
-                  </figcaption>
-                </figure>
-              </a>
-              <a href="menu.html" class="link">
-                <figure>
-                  <img src="pictures/pizza.jpg" alt="Pizza" />
-
-                  <figcaption>
-                    <div class="figure-header">
-                      <h3>Pizzanimi</h3>
-                      <p>13,90€</p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Commodi consectetur facere similique placeat repellat
-                      expedita distinctio modi omnis ab consequatur in sunt
-                      reiciendis non, perspiciatis voluptates rerum eligendi
-                      laborum voluptatem.
-                    </p>
-                  </figcaption>
-                </figure>
-              </a>
-            </div>
-          </div>
-          <div id="news">
-            <a>
+    <div id="main-content">
+      <main>
+        <h2 class="title">Suosituimmat</h2>
+        <div id="menu">
+          <div id="kebabit" class="menu-categ">
+            <a href="menu.html" class="link">
               <figure>
-                <img src="pictures/kebab.jpg" />
-                <h3>Otsikko</h3>
-                <figcaption>FEATURE ON HOLD DUE TO BUDGET CUTS</figcaption>
+                <img src="pictures/pizza.jpg" alt="Pizza" />
+
+                <figcaption>
+                  <div class="figure-header">
+                    <h3>Pizzanimi</h3>
+                    <p>13,90€</p>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </p>
+                </figcaption>
               </figure>
             </a>
-            <a>
+            <a href="menu.html" class="link">
               <figure>
-                <img src="pictures/pizza.jpg" />
-                <h3>Otsikko</h3>
-                <figcaption>FEATURE ON HOLD DUE TO BUDGET CUTS</figcaption>
+                <img src="pictures/pizza.jpg" alt="Pizza" />
+
+                <figcaption>
+                  <div class="figure-header">
+                    <h3>Pizzanimi</h3>
+                    <p>13,90€</p>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </p>
+                </figcaption>
+              </figure>
+            </a>
+            <a href="menu.html" class="link">
+              <figure>
+                <img src="pictures/pizza.jpg" alt="Pizza" />
+
+                <figcaption>
+                  <div class="figure-header">
+                    <h3>Pizzanimi</h3>
+                    <p>13,90€</p>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </p>
+                </figcaption>
+              </figure>
+            </a>
+            <a href="menu.html" class="link">
+              <figure>
+                <img src="pictures/pizza.jpg" alt="Pizza" />
+
+                <figcaption>
+                  <div class="figure-header">
+                    <h3>Pizzanimi</h3>
+                    <p>13,90€</p>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Commodi consectetur facere similique placeat repellat
+                    expedita distinctio modi omnis ab consequatur in sunt
+                    reiciendis non, perspiciatis voluptates rerum eligendi
+                    laborum voluptatem.
+                  </p>
+                </figcaption>
               </figure>
             </a>
           </div>
-        </main>
-      </div>
+        </div>
+        <div id="news">
+          <a>
+            <figure>
+              <img src="pictures/kebab.jpg" />
+              <h3>Otsikko</h3>
+              <figcaption>FEATURE ON HOLD DUE TO BUDGET CUTS</figcaption>
+            </figure>
+          </a>
+          <a>
+            <figure>
+              <img src="pictures/pizza.jpg" />
+              <h3>Otsikko</h3>
+              <figcaption>FEATURE ON HOLD DUE TO BUDGET CUTS</figcaption>
+            </figure>
+          </a>
+        </div>
+      </main>
     </div>
-    <div class="modalBackdrop"></div>
-    <div id="cart-modal">
-      <aside>
-        <h2>Ostoskori</h2>
-        <div id="products"></div>
-      </aside>
-    </div>
-  </body>
+  </div>
+  <div class="modalBackdrop"></div>
+  <div id="cart-modal">
+    <aside>
+      <h2>Ostoskori</h2>
+      <div id="products"></div>
+    </aside>
+  </div>
+</body>
+
 </html>

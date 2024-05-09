@@ -1,69 +1,61 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <script type="module" src="assets/js/login.js"></script>
-    <script type="module" src="assets/js/auth.js"></script>
-    <script type="module" src="assets/js/navigation.js"></script>
-  </head>
 
-  <body>
-    <div id="container">
-      <header>
-        <div id="header">
-          <nav id="main-nav">
-            <div id="links">
-              <ul>
-                <li><a href="index.html">Etusivu</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="restaurants.html">Ravintolat</a></li>
-                <li><a href="about.html">Tietoa</a></li>
-              </ul>
-            </div>
-            <div id="nav2">
-              <a id="login" style="display: none" href="login.html"
-                ><img src="icons/user.svg" /><span>Login</span></a
-              >
-              <a id="logout" style="display: none"
-                ><img src="icons/user.svg" /><span>Logout</span></a
-              >
-              <a id="cart"
-                ><img src="icons/shopping-cart.svg" /><span>cart</span></a
-              >
-            </div>
-          </nav>
-        </div>
-      </header>
-      <div id="loginpage">
-        <div id="loginwrapper">
-          <h2>Kirjaudu</h2>
-          <form id="login-form">
-            <label for="uname">Username</label><br />
-            <input type="text" id="uname" name="uname" /><br />
-            <label for="pass">Password</label><br />
-            <input type="password" id="pass" name="pass" />
-            <span class="error-message" id="login-error"></span>
-            <button type="submit">Login</button>
-          </form>
-          <a href="register.html">Rekisteröi uusi tunnus</a>
-        </div>
+<head>
+  <title>Pizzeria</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <script type="module" src="assets/js/login.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+  <script type="module" src="assets/js/navigation.js"></script>
+</head>
 
-        <aside>
-          <img src="pictures/pizza.jpg" />
-        </aside>
+<body>
+  <div id="container">
+    <header>
+      <div id="header">
+        <nav id="main-nav">
+          <div id="links">
+            <ul>
+              <li><a href="index.html">Etusivu</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="restaurants.html">Ravintolat</a></li>
+            </ul>
+          </div>
+          <div id="nav2">
+            <a id="login" style="display: none" href="login.html"><img src="icons/user.svg" /><span>Login</span></a>
+            <a id="logout" style="display: none"><img src="icons/user.svg" /><span>Logout</span></a>
+            <a id="cart"><img src="icons/shopping-cart.svg" /><span>cart</span></a>
+          </div>
+        </nav>
       </div>
-    </div>
-    <div class="modalBackdrop"></div>
-    <div id="cart-modal">
+    </header>
+    <div id="loginpage">
+      <div id="loginwrapper">
+        <h2>Kirjaudu</h2>
+        <form id="login-form">
+          <label for="uname">Username</label><br />
+          <input type="text" id="uname" name="uname" /><br />
+          <label for="pass">Password</label><br />
+          <input type="password" id="pass" name="pass" />
+          <span class="error-message" id="login-error"></span>
+          <button type="submit">Login</button>
+        </form>
+        <a href="register.html">Rekisteröi uusi tunnus</a>
+      </div>
+
       <aside>
-        <h2>Ostoskori</h2>
-        <div id="products"></div>
+        <img src="pictures/pizza.jpg" />
       </aside>
     </div>
-  </body>
+  </div>
+  <div class="modalBackdrop"></div>
+  <div id="cart-modal">
+    <aside>
+      <h2>Ostoskori</h2>
+      <div id="products"></div>
+    </aside>
+  </div>
+</body>
+
 </html>

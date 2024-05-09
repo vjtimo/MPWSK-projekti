@@ -1,79 +1,71 @@
 <!doctype html>
 <html lang="fi">
-  <head>
-    <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <script type="module" src="assets/js/restaurants.js"></script>
-    <script type="module" src="assets/js/auth.js"></script>
-    <script type="module" src="assets/js/navigation.js"></script>
-  </head>
 
-  <body>
-    <div id="container">
-      <div id="header">
-        <nav id="main-nav">
-          <div id="links">
-            <ul>
-              <li><a href="index.html">Etusivu</a></li>
-              <li><a href="menu.html">Menu</a></li>
-              <li><a href="restaurants.html">Ravintolat</a></li>
-              <li><a href="about.html">Tietoa</a></li>
-            </ul>
-          </div>
-          <div id="nav2">
-            <a id="login" style="display: none" href="login.html"
-              ><img src="icons/user.svg" /><span>Login</span></a
-            >
-            <a id="logout" style="display: none"
-              ><img src="icons/user.svg" /><span>Logout</span></a
-            >
-            <a id="cart"
-              ><img src="icons/shopping-cart.svg" /><span>cart</span></a
-            >
-          </div>
-        </nav>
-      </div>
-      <div id="main-content">
-        <main>
-          <ul id="restaurants">
-            <li>
-              <a href="#">
-                <h2>Pizzeria Myllypuro</h2>
-                <span>Avoinna: 10:00-22:00</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <h2>Pizzeria Arabia</h2>
-                <span>Avoinna: 10:00-22:00</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <h2>Pizzeria Myyrmäki</h2>
-                <span>Avoinna: 10:00-22:00</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <h2>Pizzeria Karamalmi</h2>
-                <span>Avoinna: 10:00-22:00</span>
-              </a>
-            </li>
+<head>
+  <title>Pizzeria</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <script type="module" src="assets/js/restaurants.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+  <script type="module" src="assets/js/navigation.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="header">
+      <nav id="main-nav">
+        <div id="links">
+          <ul>
+            <li><a href="index.html">Etusivu</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="restaurants.html">Ravintolat</a></li>
           </ul>
-        </main>
-      </div>
+        </div>
+        <div id="nav2">
+          <a id="login" style="display: none" href="login.html"><img src="icons/user.svg" /><span>Login</span></a>
+          <a id="logout" style="display: none"><img src="icons/user.svg" /><span>Logout</span></a>
+          <a id="cart"><img src="icons/shopping-cart.svg" /><span>cart</span></a>
+        </div>
+      </nav>
     </div>
-    <div class="modalBackdrop"></div>
-    <div id="cart-modal">
-      <aside>
-        <h2>Ostoskori</h2>
-        <div id="products"></div>
-      </aside>
+    <div id="main-content">
+      <main>
+        <ul id="restaurants">
+          <li>
+            <a href="#">
+              <h2>Pizzeria Myllypuro</h2>
+              <span>Avoinna: 10:00-22:00</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <h2>Pizzeria Arabia</h2>
+              <span>Avoinna: 10:00-22:00</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <h2>Pizzeria Myyrmäki</h2>
+              <span>Avoinna: 10:00-22:00</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <h2>Pizzeria Karamalmi</h2>
+              <span>Avoinna: 10:00-22:00</span>
+            </a>
+          </li>
+        </ul>
+      </main>
     </div>
-  </body>
+  </div>
+  <div class="modalBackdrop"></div>
+  <div id="cart-modal">
+    <aside>
+      <h2>Ostoskori</h2>
+      <div id="products"></div>
+    </aside>
+  </div>
+</body>
+
 </html>

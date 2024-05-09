@@ -1,73 +1,65 @@
 <!doctype html>
 <html lang="fi">
-  <head>
-    <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <script type="module" src="assets/js/order.js"></script>
-    <script type="module" src="assets/js/auth.js"></script>
-    <script type="module" src="assets/js/navigation.js"></script>
-  </head>
 
-  <body>
-    <div id="container">
-      <header>
-        <div id="header">
-          <nav id="main-nav">
-            <div id="links">
-              <ul>
-                <li><a href="index.html">Etusivu</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="restaurants.html">Ravintolat</a></li>
-                <li><a href="about.html">Tietoa</a></li>
-              </ul>
-            </div>
-            <div id="nav2">
-              <a id="login" href="login.html" style="display: none"
-                ><img src="icons/user.svg" /><span>Login</span></a
-              >
-              <a id="logout" style="display: none"
-                ><img src="icons/user.svg" /><span>Logout</span></a
-              >
-              <a id="cart"
-                ><img src="icons/shopping-cart.svg" /><span>cart</span></a
-              >
-            </div>
-          </nav>
-        </div>
-      </header>
-      <div id="main-content">
-        <main>
-          <div id="deliveryWrapper">
-            <div id="confTuotteet">
-              <h2>Tuotteet</h2>
-            </div>
+<head>
+  <title>Pizzeria</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <script type="module" src="assets/js/order.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+  <script type="module" src="assets/js/navigation.js"></script>
+</head>
 
-            <div id="delivery">
-              <form id="orderForm">
-                <h2>Tilauksen tiedot</h2>
-                <label for="uname">Etunimi ja sukunimi</label>
-                <input type="text" id="name" name="name" />
-                <label for="pass">Puhelin</label>
-                <input type="text" id="phone" name="phone" />
-                <label for="address">Toimitusosoite</label>
-                <select id="restaurantSelect" name="restaurants"></select>
-                <button type="submit">Tilaa</button>
-              </form>
-            </div>
+<body>
+  <div id="container">
+    <header>
+      <div id="header">
+        <nav id="main-nav">
+          <div id="links">
+            <ul>
+              <li><a href="index.html">Etusivu</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="restaurants.html">Ravintolat</a></li>
+            </ul>
           </div>
-        </main>
+          <div id="nav2">
+            <a id="login" href="login.html" style="display: none"><img src="icons/user.svg" /><span>Login</span></a>
+            <a id="logout" style="display: none"><img src="icons/user.svg" /><span>Logout</span></a>
+            <a id="cart"><img src="icons/shopping-cart.svg" /><span>cart</span></a>
+          </div>
+        </nav>
       </div>
+    </header>
+    <div id="main-content">
+      <main>
+        <div id="deliveryWrapper">
+          <div id="confTuotteet">
+            <h2>Tuotteet</h2>
+          </div>
+
+          <div id="delivery">
+            <form id="orderForm">
+              <h2>Tilauksen tiedot</h2>
+              <label for="uname">Etunimi ja sukunimi</label>
+              <input type="text" id="name" name="name" />
+              <label for="pass">Puhelin</label>
+              <input type="text" id="phone" name="phone" />
+              <label for="address">Toimitusosoite</label>
+              <select id="restaurantSelect" name="restaurants"></select>
+              <button type="submit">Tilaa</button>
+            </form>
+          </div>
+        </div>
+      </main>
     </div>
-    <div class="modalBackdrop"></div>
-    <div id="cart-modal">
-      <aside>
-        <h2>Ostoskori</h2>
-        <div id="products"></div>
-      </aside>
-    </div>
-  </body>
+  </div>
+  <div class="modalBackdrop"></div>
+  <div id="cart-modal">
+    <aside>
+      <h2>Ostoskori</h2>
+      <div id="products"></div>
+    </aside>
+  </div>
+</body>
+
 </html>
