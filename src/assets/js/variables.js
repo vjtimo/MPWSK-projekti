@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:3000/api/';
+const url = 'http://10.120.32.99/app/';
 const nav2 = document.querySelector('.nav2');
 let logged = false;
 const logoutLink = document.querySelector('#logout');

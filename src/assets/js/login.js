@@ -20,7 +20,7 @@ const displayErrors = (errorData) => {
     const [field, message] = error.split(': ');
     const errorElement = document.getElementById(`${field}-error`);
     if (errorElement) {
-      errorElement.textContent = message; // Display the error message
+      errorElement.textContent = message;
     }
   });
 };
