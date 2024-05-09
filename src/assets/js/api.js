@@ -1,5 +1,5 @@
-import {setLogged, url} from './variables.js';
-
+import {setLogged} from './variables.js';
+const url = 'http://10.120.32.99/app/api/';
 async function fetchData(route, options) {
   try {
     const response = await fetch(url + route, options);
@@ -212,6 +212,20 @@ const getOrderById = async (id) => {
     console.error('Error fetching pizzas by IDs:', error);
   }
 };
+const postProduct = async (data) => {
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + `pizzas/`, fetchOptions);
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.error?.message || 'Failed to create product');
+  }
+};
 export {
   registerUser,
   login,
@@ -222,4 +236,5 @@ export {
   postOrder,
   updateOrderStatus,
   getOrderById,
+  postProduct,
 };

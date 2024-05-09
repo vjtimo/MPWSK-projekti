@@ -106,7 +106,6 @@ const renderOrderById = async (id, button) => {
   );
 };
 
-//provided by chatGPT
 const showToast = (message) => {
   const toast = document.createElement('div');
   toast.innerText = message;
@@ -126,7 +125,3 @@ const showToast = (message) => {
   }, 2000);
 };
 renderOrders();
-
-/* SQL FOR TEsTING
-UPDATE tilaus
-SET tilaId = 1;*/

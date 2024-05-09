@@ -1,6 +1,6 @@
 import {addItemsToCart} from './api.js';
-import {url} from './variables.js';
 
+const url = 'http://10.120.32.99/app/api/';
 import {logoutLink, loginLink, isLogged, setLogged} from './variables.js';
 const shoppingCart = document.querySelector('#cart');
 
@@ -19,7 +19,7 @@ const checkSession = async () => {
       } else {
         const role = json.user.rooli;
 
-        return {valid: true, role: role}; // Session is valid, return the role
+        return {valid: true, role: role};
       }
     } catch (e) {
       console.log(e.message);
