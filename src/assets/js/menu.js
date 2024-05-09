@@ -10,12 +10,12 @@ const displayItems = async (admin) => {
     const pizzaDiv = document.querySelector('#pizzat');
     const kebabDiv = document.querySelector('#kebabit');
     const juomaDiv = document.querySelector('#juomat');
-
+    console.log(data);
     data.forEach((item) => {
-      const name = item.nimi;
-      const description = item.ainekset;
-      const price = item.hinta;
-
+      console.log(item);
+      const name = item.name;
+      const description = item.ingredients;
+      const price = item.price;
       const link = document.createElement('a');
       link.className = 'link';
 
