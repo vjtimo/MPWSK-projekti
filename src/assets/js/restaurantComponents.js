@@ -9,16 +9,20 @@ const displayRestaurants = async () => {
       const puhelinnumero = data[i].puhelinnumero;
       const katuosoite = data[i].katuosoite;
       const postitoimipaikka = data[i].postitoimipaikka;
-      div.innerHTML += `
-      <li>
-      <a href="#">
+      const link = document.createElement('li');
+      const linkA = document.createElement('a');
+
+      linkA.innerHTML += `
         <h2>${name}</h2>
         <span>${katuosoite}</span>
         <span>${puhelinnumero}</span>
-      </a>
-    </li>
     `;
-
+    linkA.addEventListener('click', (e) => {
+      e.preventDefault();
+      createModal(data[i]);
+    });
+      link.appendChild(linkA);
+      div.appendChild(link);
     }
   } catch (error) {
     console.log(error.message);
@@ -26,14 +30,14 @@ const displayRestaurants = async () => {
 };
 const createModal = (data) => {
   const modalDrop = document.querySelector('.modalBackdrop');
-  const {nimi, kuvaus_fi, hinta} = data;
+  const {nimi, katuosoite, puhelinnumero} = data;
   const modal = document.querySelector('#restaurant-modal');
   modal.innerHTML = `<div id ="modal-content">
-  <div id="modal-tayte">
+  <div id="restaurant-info">
   <span class="close-button">&times;</span>
     <h2>${nimi}</h2>
-    <p>${kuvaus_fi}</p>
-    <h3>${hinta}<h3>
+    <p>${katuosoite}</p>
+    <h3>${puhelinnumero}<h3>
   </div>`;
   modalDrop.style.display = 'block';
   const close = document.querySelector('.close-button');
@@ -41,6 +45,7 @@ const createModal = (data) => {
   close.addEventListener('click', (e) => {
     modal.style.display = 'none';
     modalDrop.style.display = 'none';
+
   });
   modal.style.display = 'flex';
 };
