@@ -12,9 +12,11 @@ const displayItems = async (admin) => {
     const juomaDiv = document.querySelector('#juomat');
 
     data.forEach((item) => {
-      const name = item.nimi;
-      const description = item.ainekset;
-      const price = item.hinta;
+      const name = item.name;
+      const description = item.ingredients;
+      const price = item.price;
+
+      console.log(item.name);
 
       const link = document.createElement('a');
       link.className = 'link';
@@ -60,9 +62,6 @@ const displayItems = async (admin) => {
     });
   } catch (error) {
     console.log(error.message);
-  }
-  if (admin) {
-    return;
   }
 };
 
