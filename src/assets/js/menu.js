@@ -58,9 +58,87 @@ const displayItems = async (admin) => {
         link.append(DeleteButton);
       }
     });
+    if (admin) {
+      const addProduct = document.createElement('button');
+      addProduct.innerText = 'add product';
+      addProduct.addEventListener('click', (e) => {
+        e.preventDefault();
+        addProductmodal();
+      });
+      pizzaDiv.append(addProduct);
+      kebabDiv.append(addProduct);
+      juomaDiv.append(addProduct);
+    }
   } catch (error) {
     console.log(error.message);
   }
+};
+
+const addProductmodal = async () => {
+  const ingredients = await fetchData('pizzas/ingredients');
+  console.log(ingredients);
+  const modalDrop = document.querySelector('.modalBackdrop');
+  const modal = document.querySelector('#pizza-modal');
+  const ingredientsCheckboxes = ingredients
+    .map(
+      (ingredient, index) => `
+  <label for="ingredient${index}">${ingredient.nimi_fi}</label>
+  <input type="checkbox" id="ingredient${index}" value="${ingredient.nimi_fi}" name="ingredient${index}"><br>
+`
+    )
+    .join('');
+  modal.innerHTML = `<div id ="modal-content">
+  <span class="close-button">&times;</span>
+    <h2>Lisää tuote</h2>
+    <form id="add-product-form">
+    <label for="name">Nimi</label>
+    <input type="text" id="name" name="name" required>
+    ${ingredientsCheckboxes}
+    <label for="price">Hinta</label>
+    <input type="number" id="price" name="price" required>
+    <label for="category">Kategoria</label>
+    <select id="category" name="category" required>
+    <option value="1">Pizza</option>
+    <option value="2">Kebab</option>
+    <option value="3">Juoma</option>
+    </select>
+    <label for="description">Kuvaus</label>
+    <input type="text" id="description" name="description" required>
+    <button type="submit">Lisää tuote</button>
+    </form>`;
+  const form = document.querySelector('#add-product-form');
+  console.log(form);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const price = formData.get('price');
+    const category = formData.get('category');
+    const ingredients2 = [];
+    const description = formData.get('description');
+    form.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+      if (checkbox.checked) {
+        ingredients2.push(checkbox.value);
+      }
+    });
+
+    console.log(ingredients2);
+    const newProduct = {
+      name: name,
+      hinta: price,
+      category_name: category,
+      ingredient_names: ingredients2,
+      description: description,
+    };
+    console.log(newProduct);
+  });
+  modalDrop.classList.add('visible');
+  modal.classList.add('visible');
+  const close = document.querySelector('.close-button');
+  close.addEventListener('click', closeModal);
+  modalDrop.addEventListener('click', closeModal);
+
+  modal.style.display = 'flex';
 };
 
 const createModal = (data) => {
