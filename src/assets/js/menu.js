@@ -16,8 +16,6 @@ const displayItems = async (admin) => {
       const description = item.ingredients;
       const price = item.price;
 
-      console.log(item.name);
-
       const link = document.createElement('a');
       link.className = 'link';
 
