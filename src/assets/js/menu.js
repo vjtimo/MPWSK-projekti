@@ -224,17 +224,17 @@ const addProductmodal = async () => {
 };
 
 const createModal = (data) => {
+  console.log(data);
   const modalDrop = document.querySelector('.modalBackdrop');
-  const {name, ingredients, hinta} = data;
+  const {name, ingredients, price, imageUrl} = data;
   const modal = document.querySelector('#pizza-modal');
   modal.innerHTML = `<div id ="modal-content">
-  <img src="pictures/pizza.jpg" alt="image of pizza"></img>
-
+  <img src= alt="image of pizza"></img>
   <div id="modal-tayte">
   <span class="close-button">&times;</span>
     <h2>${name}</h2>
     <p>${ingredients}</p>
-    <h3>${hinta}<h3>
+    <h3>${price}<h3>
       <button class="addToCart">Lisää ostoskoriin</button>
   </div>`;
   let addToCartbtn = document.querySelector('.addToCart');
