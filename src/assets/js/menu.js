@@ -227,9 +227,10 @@ const createModal = (data) => {
   console.log(data);
   const modalDrop = document.querySelector('.modalBackdrop');
   const {name, ingredients, price, imageUrl} = data;
+  const img = url + imageUrl;
   const modal = document.querySelector('#pizza-modal');
   modal.innerHTML = `<div id ="modal-content">
-  <img src= alt="image of pizza"></img>
+  <img src=${img} alt="image of pizza"></img>
   <div id="modal-tayte">
   <span class="close-button">&times;</span>
     <h2>${name}</h2>
