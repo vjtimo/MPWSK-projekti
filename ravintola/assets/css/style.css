@@ -1,6 +1,4 @@
-*,
-::before,
-::after {
+* {
   box-sizing: border-box;
 }
 body {
@@ -16,6 +14,7 @@ a {
 a:visited {
   color: inherit;
 }
+
 #header {
   box-shadow: 3px 2px 15px #949393;
   position: sticky;
@@ -26,21 +25,25 @@ a:visited {
   z-index: 100;
   width: 100%;
   align-items: center;
-  height: 3rem;
+  height: 5rem;
+  color: #51993f;
 }
 .title {
-  margin: 8px;
-  text-align: center;
+  margin: 2rem 2rem 0 2rem;
+  text-align: start;
+  font-size: 30px;
 }
 #header nav {
   max-width: 1300px;
   width: 100%;
   align-items: center;
-
+  font-size: 25px;
   display: flex;
   text-decoration: none;
 }
-
+nav a {
+  color: #51993f;
+}
 nav ul {
   display: flex;
   justify-content: space-around;
@@ -51,6 +54,9 @@ nav ul {
 }
 nav li {
   margin: auto 1rem;
+}
+nav li:hover {
+  text-decoration: underline;
 }
 #nav2 {
   width: 30%;
@@ -70,6 +76,9 @@ nav li {
   align-items: center;
   display: flex;
 }
+#nav2 a:hover {
+  text-decoration: underline;
+}
 #nav2 img {
   margin-right: 5px;
 }
@@ -81,7 +90,7 @@ nav li {
   display: flex;
   background-color: #ffffff;
   border-bottom: 1px solid rgb(229, 229, 229);
-  top: 3rem;
+  top: 5rem;
   position: sticky;
 }
 #categorylist {
@@ -121,6 +130,69 @@ nav li {
 
   flex-direction: column;
 }
+.slideshow-container {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  height: 40dvh;
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+  object-fit: fill;
+  height: 100%;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
 main {
   display: block;
@@ -140,6 +212,7 @@ main {
 html {
   scroll-behavior: smooth;
 }
+
 main a {
   width: 100%;
   display: flex;
@@ -156,12 +229,13 @@ main a {
   flex-wrap: wrap;
 }
 .menu-categ {
+  scroll-margin-top: 15rem;
   display: flex;
   background-color: #fcfcfc;
   margin: auto;
-  width: 100%;
+  width: auto;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: start;
 }
 
 #menu img {
@@ -178,9 +252,8 @@ main a {
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   width: calc(80% / 4);
-  min-width: calc(80 / 2);
   height: 50%;
-  margin: 1rem;
+  margin: 2.5%;
 }
 #menu a:hover {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.603);
@@ -188,19 +261,22 @@ main a {
 #menu figure {
   display: flex;
   flex-direction: column;
-
+  height: 100%;
   align-items: center;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding-bottom: 1rem;
 }
 #menu figcaption {
   border-bottom: none;
   width: 100%;
+
+  height: 7rem;
   overflow: hidden;
 }
 .figure-header {
   width: 100%;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -225,9 +301,10 @@ main a {
   font-weight: 550;
   color: #fefefe;
   border-radius: 15px;
-  background-color: rgb(51, 193, 29);
+  background-color: rgb(63, 224, 14);
 }
 figure h3 {
+  color: #d89d66;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 70%;
@@ -366,12 +443,13 @@ figcaption p {
   position: fixed;
   z-index: 999;
   margin: auto;
-  width: 80%;
+  width: 40%;
   border-radius: 15px;
   inset: 0px;
-  height: 50dvh;
+  height: 40%;
   display: none;
 }
+
 #addProduct {
   position: fixed;
   z-index: 999;
@@ -403,6 +481,61 @@ figcaption p {
   width: 50%;
 
   overflow: hidden auto;
+}
+#yhteystiedot {
+  display: flex;
+  border: 1px solid#d1c3c3b6;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.yhteystieto-field {
+  padding: 2rem;
+  border-bottom: 1px solid #d1c3c3b6;
+  width: 100%;
+}
+#customerInfoModal {
+  z-index: 999;
+  width: 20%;
+  border-radius: 10px;
+  height: fit-content;
+  position: fixed;
+  background-color: white;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, 30%);
+}
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 5rem;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 0;
+  transition: max-height 0.2s ease-in-out;
+
+  overflow: hidden;
+}
+.dropdown-content.show {
+  max-height: 500px;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 10px;
+  margin: 1rem;
+  text-decoration: none;
+  display: flex;
 }
 
 .checkbox-group {
@@ -521,6 +654,38 @@ a:hover {
 #show {
   display: flex;
 }
+.tabs {
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.tablinks {
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tablinks:hover {
+  background-color: #ddd;
+}
+
+.tablinks.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabcontent.active {
+  display: flex;
+}
 .product {
   border: #bababa;
   border-style: solid;
@@ -581,6 +746,7 @@ a:hover {
   display: flex;
   max-width: 750px;
   width: 40%;
+  justify-content: end;
   flex-direction: column;
   margin: 2rem;
 }
@@ -598,10 +764,26 @@ a:hover {
 #orderForm {
   width: 90%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #orderForm label {
   display: flex;
   justify-content: center;
+}
+#orderForm select {
+  width: 100%;
+  height: 2rem;
+}
+#orderForm p {
+  align-self: start;
+}
+#orderForm h2 {
+  margin-bottom: 1rem;
+}
+#orderForm * {
+  margin: 5px;
 }
 #orderForm input {
   width: 100%;
@@ -615,7 +797,11 @@ a:hover {
 }
 #orders {
   width: 100%;
-  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#deliveries {
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -647,16 +833,40 @@ a:hover {
   flex-direction: column;
   width: 50%;
 }
-#orderList img {
-  object-fit: cover;
-  width: 100%;
-  border-radius: 10px;
+#deliveryList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
 }
+#deliveryList li {
+  margin: 1rem;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: #ada6a6;
+  border-style: solid;
+  width: 100%;
+  max-width: 700px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
 #orderList h3 {
   margin: 0;
   padding: 5px;
 }
+#deliveryList h3 {
+  margin: 0;
+  padding: 5px;
+}
 #orderList p {
+  margin: 0;
+  padding: 5px;
+}
+#deliveryList p {
   margin: 0;
   padding: 5px;
 }
@@ -669,6 +879,14 @@ a:hover {
   align-items: center;
 }
 #orderList button {
+  height: 3rem;
+  font-weight: bold;
+  width: 96%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background-color: #cfdf75;
+}
+#deliveryList button {
   height: 3rem;
   font-weight: bold;
   width: 96%;
@@ -747,6 +965,20 @@ a:hover {
     object-fit: cover;
     height: 100%;
   }
+  #pizza-modal #modal-content {
+    flex-direction: column;
+  }
+  #pizza-modal #modal-content {
+    flex-direction: column;
+  }
+  #pizza-modal {
+    height: 70%;
+    width: 100%;
+  }
+  #pizza-modal img {
+    width: 100%;
+    object-fit: contain;
+  }
   #menu figcaption {
     height: 100%;
   }
@@ -755,6 +987,7 @@ a:hover {
   }
   .figure-header h3 {
     width: 100%;
+    padding: 0;
     display: flex;
   }
   .figure-header p {

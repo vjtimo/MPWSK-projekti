@@ -1,5 +1,5 @@
 'use strict';
-import {fetchData, postOrder, postProduct} from './api.js';
+import {fetchData, postOrder, postProduct, deletePizzaById} from './api.js';
 import {addItemToCart} from './shoppingCart.js';
 import {isLogged, setLogged} from './variables.js';
 import {checkSession} from './auth.js';
@@ -10,13 +10,11 @@ const displayItems = async (admin) => {
     const pizzaDiv = document.querySelector('#pizzat');
     const kebabDiv = document.querySelector('#kebabit');
     const juomaDiv = document.querySelector('#juomat');
-    console.log(data);
     data.forEach((item) => {
       const name = item.name;
       const description = item.ingredients;
       const price = item.price;
       const imgUrl = url + item.imageUrl;
-      console.log(imgUrl);
       const link = document.createElement('a');
       link.className = 'link';
 
@@ -48,15 +46,16 @@ const displayItems = async (admin) => {
         juomaDiv.appendChild(link);
       }
       if (admin) {
-        console.log('yolo');
-        const DeleteButton = document.createElement('button');
-        DeleteButton.innerText = 'delete product';
-        DeleteButton.addEventListener('click', (e) => {
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'delete product';
+        deleteButton.addEventListener('click', async (e) => {
           e.preventDefault();
           e.stopPropagation();
-          link.remove();
+          const token = sessionStorage.getItem('token');
+          deletePizzaById(item.id, token);
+          delete link.remove();
         });
-        link.append(DeleteButton);
+        link.append(deleteButton);
       }
     });
     if (admin) {
@@ -89,7 +88,7 @@ const addProductmodal = async () => {
 
   const closeButton = document.createElement('span');
   closeButton.className = 'close-button';
-  closeButton.textContent = '\u00D7'; // Unicode for multiplication sign (×)
+  closeButton.textContent = '\u00D7';
   addModalContent.appendChild(closeButton);
 
   const heading = document.createElement('h2');

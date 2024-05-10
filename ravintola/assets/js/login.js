@@ -8,7 +8,7 @@ loginForm.addEventListener('submit', async (e) => {
   if (loginResult) {
     await getCart(loginResult.id);
 
-    window.location.href = '/src/index.html';
+    window.location.href = 'index.html';
   }
 });
 const displayErrors = (errorData) => {

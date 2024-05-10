@@ -22,7 +22,6 @@ const registerUser = async (regForm) => {
   const bodyContent = {
     tunnus: new FormData(regForm).get('uname'),
     salasana: new FormData(regForm).get('pass'),
-
     email: new FormData(regForm).get('email'),
     puhelin: new FormData(regForm).get('phone'),
     etunimi: new FormData(regForm).get('fname'),
@@ -157,7 +156,9 @@ const postOrder = async (orderForm) => {
   const body = {
     ostoskori: ostoskoriId,
     ravintola: orderForm.get('restaurants'),
+    toimitustapa: orderForm.get('delivery'),
   };
+  console.log(body);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -167,10 +168,8 @@ const postOrder = async (orderForm) => {
   };
   const response = await fetch(url + `order`, fetchOptions);
   const json = await response.json();
-  console.log(json);
   sessionStorage.setItem('cartId', json.cartId);
   localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
-  console.log(response);
   if (!response.ok) {
     throw new Error(json.error?.message || 'Tilausta ei voitu viedä loppuun');
   }
@@ -226,6 +225,33 @@ const postProduct = async (data) => {
     throw new Error(json.error?.message || 'Failed to create product');
   }
 };
+const getUserInfo = async (id, token) => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      authorization: 'Bearer ' + token,
+    },
+  };
+  const response = await fetch(url + `users/${id}`, fetchOptions);
+  const json = await response.json();
+  return json;
+};
+const deletePizzaById = async (id, token) => {
+  const fetchOptions = {
+    method: 'PATCH',
+    headers: {
+      authorization: 'Bearer ' + token,
+    },
+  };
+  const response = await fetch(url + `pizzas/${id}`, fetchOptions);
+  if (!response) {
+    console.log('something went wrong');
+    return false;
+  } else {
+    return true;
+  }
+};
+
 export {
   registerUser,
   login,
@@ -237,4 +263,6 @@ export {
   updateOrderStatus,
   getOrderById,
   postProduct,
+  getUserInfo,
+  deletePizzaById,
 };

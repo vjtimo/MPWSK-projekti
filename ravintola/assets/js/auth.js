@@ -1,7 +1,7 @@
 import {addItemsToCart} from './api.js';
 
 const url = 'http://10.120.32.99/app/api/';
-import {logoutLink, loginLink, isLogged, setLogged} from './variables.js';
+import {profileLink, loginLink, isLogged, setLogged} from './variables.js';
 const shoppingCart = document.querySelector('#cart');
 
 const checkSession = async () => {
@@ -35,13 +35,13 @@ const logout = async () => {
   localStorage.removeItem('STORED_ORDERS');
   sessionStorage.removeItem('cartId');
   alert('You have logged out');
-  window.location.href = '/src/index.html';
+  window.location.href = 'index.html';
   setLogged(false);
 };
 
 const startApp = (logged) => {
   logged ? console.log('logged in') : console.log('not logged in');
-  logoutLink.style.display = logged ? 'flex' : 'none';
+  profileLink.style.display = logged ? 'flex' : 'none';
   loginLink.style.display = logged ? 'none' : 'flex';
   shoppingCart.style.display = logged ? 'flex' : 'none';
 };

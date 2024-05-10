@@ -1,5 +1,6 @@
 import {getPizzasByIds, addItemsToCart, postOrder} from './api.js';
 import {fetchData} from './api.js';
+import {url} from './variables.js';
 const productsDiv = document.querySelector('#confTuotteet');
 const products = JSON.parse(localStorage.getItem('STORED_ORDERS'));
 const orderForm = document.querySelector('#orderForm');
@@ -18,6 +19,7 @@ if (products) {
       ...matchingItem,
     };
   });
+  console.log(combinedCart);
   const addRestaurants = async () => {
     const restSelect = document.querySelector('#restaurantSelect');
     const restaurants = await fetchData('restaurant');
@@ -31,13 +33,13 @@ if (products) {
     e.preventDefault();
     const orderData = new FormData(orderForm);
     await postOrder(orderData);
-    window.location.href = '/src/index.html';
+    window.location.href = 'index.html';
   });
   combinedCart.forEach((item) => {
     productsDiv.innerHTML += `
 
     <div class="testi">
-      <img src="pictures/pizza.jpg" alt="pizzat" />
+      <img src="${url}/uploads/${item.image_file}" alt="pizzat" />
       <div class="tuoteTiedot">
         <p>${item.nimi} x ${item.quantity}</p>
         <p>${item.hinta}</p>
