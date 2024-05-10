@@ -31,8 +31,6 @@ const registerUser = async (regForm) => {
     postitoimipaikka: new FormData(regForm).get('city'),
   };
 
-  console.log(bodyContent);
-
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -65,7 +63,6 @@ const login = async (loginForm) => {
     tunnus: new FormData(loginForm).get('uname'),
     salasana: new FormData(loginForm).get('pass'),
   };
-  console.log(bodyContent);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -126,7 +123,6 @@ const getCart = async (id) => {
   } else {
     localStorage.setItem('STORED_ORDERS', JSON.stringify(json.STORED_ORDERS));
   }
-  console.log(json);
   sessionStorage.setItem('cartId', JSON.stringify(json.id));
 };
 const addItemsToCart = async () => {
@@ -152,13 +148,11 @@ const addItemsToCart = async () => {
 };
 const postOrder = async (orderForm) => {
   const ostoskoriId = sessionStorage.getItem('cartId');
-  console.log(ostoskoriId);
   const body = {
     ostoskori: ostoskoriId,
     ravintola: orderForm.get('restaurants'),
     toimitustapa: orderForm.get('delivery'),
   };
-  console.log(body);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -243,7 +237,7 @@ const deletePizzaById = async (id, token) => {
       authorization: 'Bearer ' + token,
     },
   };
-  const response = await fetch(url + `pizzas/${id}`, fetchOptions);
+  const response = await fetch(url + `delete/pizzas/${id}`, fetchOptions);
   if (!response) {
     console.log('something went wrong');
     return false;

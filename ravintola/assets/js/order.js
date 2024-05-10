@@ -19,7 +19,6 @@ if (products) {
       ...matchingItem,
     };
   });
-  console.log(combinedCart);
   const addRestaurants = async () => {
     const restSelect = document.querySelector('#restaurantSelect');
     const restaurants = await fetchData('restaurant');

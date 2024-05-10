@@ -29,7 +29,7 @@ const createCustomerInfoModal = async () => {
   const user = JSON.parse(sessionStorage.getItem('user'));
   const token = sessionStorage.getItem('token');
   const data = await getUserInfo(user.id, token);
-  console.log(data);
+
   modal.style.display = 'flex';
   modal.innerHTML = `<div id="yhteystiedot">
       <a class="yhteystieto-field">
@@ -85,7 +85,6 @@ document.addEventListener('click', (event) => {
 shoppingCart.addEventListener('click', toggleCart);
 
 const addDropDownElems = () => {
-  console.log('test');
   const dropDown = document.querySelector('.dropdown-content');
   const orderManagement = document.createElement('a');
   orderManagement.innerText = 'Tilaustenhallinta';
@@ -94,12 +93,11 @@ const addDropDownElems = () => {
 };
 (async () => {
   const {valid, role} = await checkSession();
-  console.log(role);
-  console.log(valid);
+
   if (valid && role === 'admin') {
     addDropDownElems();
   } else {
   }
-  console.log(valid);
+
   setLogged(valid);
 })();

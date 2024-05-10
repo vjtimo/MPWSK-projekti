@@ -1,5 +1,6 @@
 import {fetchData, updateOrderStatus, getOrderById} from './api.js';
 import {checkSession} from './auth.js';
+import {setLogged} from './variables.js';
 const createButton = (id, status) => {
   const button = document.createElement('button');
   button.innerText = status === 1 ? 'Vastaanota' : 'Toimita';
@@ -69,9 +70,6 @@ const renderOrders = async () => {
   orderList.innerHTML = '';
   const orderData = await fetchData('order');
   const ordersToDo = orderData.filter((item) => item.statusId < 3);
-  const ordersToDeliver = orderData.filter((item) => item.statusId > 2);
-  console.log(ordersToDo);
-  console.log(ordersToDeliver);
   if (ordersToDo.length > 0) {
     orderData.forEach((order) => {
       if (order.statusId < 3) {
@@ -120,13 +118,10 @@ const renderOrders = async () => {
 const renderOrderById = async (id, button) => {
   const [order] = await getOrderById(id);
 
-  console.log(order);
-
   const listItem = document.querySelector(`#id${id}`);
   if (order.statusId > 2) {
     listItem.remove();
     const orderList = document.querySelector('#orderList');
-    console.log('TESTTT', orderList.hasChildNodes());
     if (!orderList.hasChildNodes()) {
       orderList.innerHTML = '<H3>EI TILAUKSIA</H3>';
       return;
@@ -224,13 +219,10 @@ const renderDeliveries = async () => {
 const renderDeliveryById = async (id, button) => {
   const [order] = await getOrderById(id);
 
-  console.log(order);
-
   const listItem = document.querySelector(`#id${id}`);
   if (order.statusId === 5) {
     listItem.remove();
     const deliveryList = document.querySelector('#deliveryList');
-    console.log('TESTTT', deliveryList.hasChildNodes());
     if (!deliveryList.hasChildNodes()) {
       orderList.innerHTML = '<H3>EI TILAUKSIA</H3>';
       return;
@@ -260,8 +252,6 @@ const renderDeliveryById = async (id, button) => {
 };
 (async () => {
   const {valid, role} = await checkSession();
-  console.log(role);
-  console.log(valid);
   if (valid && role === 'admin') {
     renderDeliveries();
     renderOrders();
@@ -269,6 +259,6 @@ const renderDeliveryById = async (id, button) => {
     const main = document.querySelector('main');
     main.innerHTML = 'Nope';
   }
-  console.log(valid);
+
   setLogged(valid);
 })();

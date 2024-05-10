@@ -186,7 +186,6 @@ const addProductmodal = async () => {
   addModalContent.appendChild(form);
   modal.appendChild(addModalContent);
 
-  console.log(form);
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -201,7 +200,6 @@ const addProductmodal = async () => {
       }
     });
 
-    console.log(ingredients2);
     const newProduct = {
       name: name,
       hinta: price,
@@ -223,7 +221,6 @@ const addProductmodal = async () => {
 };
 
 const createModal = (data) => {
-  console.log(data);
   const modalDrop = document.querySelector('.modalBackdrop');
   const {name, ingredients, price, imageUrl} = data;
   const img = url + imageUrl;
@@ -264,12 +261,12 @@ const closeModal = (e) => {
 
 (async () => {
   const {valid, role} = await checkSession();
-  console.log(role);
+
   if (valid && role === 'admin') {
     displayItems(true);
   } else {
     displayItems(false);
   }
-  console.log(valid);
+
   setLogged(valid);
 })();

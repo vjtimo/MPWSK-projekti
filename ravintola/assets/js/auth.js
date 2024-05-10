@@ -40,7 +40,6 @@ const logout = async () => {
 };
 
 const startApp = (logged) => {
-  logged ? console.log('logged in') : console.log('not logged in');
   profileLink.style.display = logged ? 'flex' : 'none';
   loginLink.style.display = logged ? 'none' : 'flex';
   shoppingCart.style.display = logged ? 'flex' : 'none';
