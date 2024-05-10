@@ -60,6 +60,7 @@ const displayItems = async (admin) => {
     });
     if (admin) {
       const addProduct = document.createElement('button');
+      addProduct.id = 'add-product-btn';
       addProduct.innerText = 'add product';
       addProduct.addEventListener('click', (e) => {
         e.preventDefault();
@@ -208,7 +209,8 @@ const addProductmodal = async () => {
       description: description,
     };
     console.log(newProduct);
-    postProduct(newProduct);
+    const token = sessionStorage.getItem('token');
+    postProduct(newProduct, token);
     closeModal();
   });
   modalDrop.classList.add('visible');
@@ -231,7 +233,7 @@ const createModal = (data) => {
   <span class="close-button">&times;</span>
     <h2>${name}</h2>
     <p>${ingredients}</p>
-    <h3>${price}<h3>
+    <h3>${price}€<h3>
       <button class="addToCart">Lisää ostoskoriin</button>
   </div>`;
   let addToCartbtn = document.querySelector('.addToCart');

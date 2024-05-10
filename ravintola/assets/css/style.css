@@ -65,7 +65,11 @@ nav li:hover {
   justify-content: right;
   display: flex;
 }
-
+#add-product-btn {
+  height: 10rem;
+  margin-top: 10rem;
+  margin-left: 8rem;
+}
 #links {
   width: 30%;
   justify-content: start;

@@ -89,7 +89,7 @@ const addDropDownElems = () => {
   const orderManagement = document.createElement('a');
   orderManagement.innerText = 'Tilaustenhallinta';
   orderManagement.href = 'management.html';
-  dropDown.append(orderManagement);
+  dropDown.prepend(orderManagement);
 };
 (async () => {
   const {valid, role} = await checkSession();

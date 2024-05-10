@@ -205,11 +205,12 @@ const getOrderById = async (id) => {
     console.error('Error fetching pizzas by IDs:', error);
   }
 };
-const postProduct = async (data) => {
+const postProduct = async (data, token) => {
   const fetchOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      authorization: 'Bearer ' + token,
     },
     body: JSON.stringify(data),
   };
@@ -237,7 +238,7 @@ const deletePizzaById = async (id, token) => {
       authorization: 'Bearer ' + token,
     },
   };
-  const response = await fetch(url + `delete/pizzas/${id}`, fetchOptions);
+  const response = await fetch(url + `pizzas/delete/${id}`, fetchOptions);
   if (!response) {
     console.log('something went wrong');
     return false;
