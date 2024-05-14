@@ -98,6 +98,6 @@ const addDropDownElems = () => {
     addDropDownElems();
   } else {
   }
-
+  console.log(valid);
   setLogged(valid);
 })();
