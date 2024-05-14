@@ -32,6 +32,7 @@ if (products) {
     e.preventDefault();
     const orderData = new FormData(orderForm);
     await postOrder(orderData);
+    localStorage.setItem('toastMessage', 'Tilaus otettu onnistuneesti vastaan');
     window.location.href = 'index.html';
   });
   combinedCart.forEach((item) => {
@@ -45,4 +46,12 @@ if (products) {
       </div>
     </div>`;
   });
+  //viimeminuutin purkkaratkasu
+  const total = localStorage.getItem('totalPrice');
+  productsDiv.insertAdjacentHTML(
+    'beforeend',
+    `<p><strong>Kokonaishinta: ${total}€</strong></p>`
+  );
 }
+
+//TODO customer order tracker

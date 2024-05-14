@@ -98,7 +98,7 @@ const calculateTotal = (cartItems) => {
 
   const totalElement = document.createElement('p');
   totalElement.innerText = `Kokonaishinta: ${totalCost.toFixed(2)}`;
-
+  localStorage.setItem('totalPrice', totalCost);
   return totalElement;
 };
 

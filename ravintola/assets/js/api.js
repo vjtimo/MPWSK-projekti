@@ -1,5 +1,5 @@
 import {setLogged} from './variables.js';
-const url = 'http://10.120.32.99/app/api/';
+const url = 'https://10.120.32.99/app/api/';
 async function fetchData(route, options) {
   try {
     const response = await fetch(url + route, options);
@@ -165,7 +165,7 @@ const postOrder = async (orderForm) => {
   sessionStorage.setItem('cartId', json.cartId);
   localStorage.setItem('STORED_ORDERS', JSON.stringify([]));
   if (!response.ok) {
-    throw new Error(json.error?.message || 'Tilausta ei voitu viedä loppuun');
+    throw new Error(json.error?.message || 'Tilausta ei voitu viedä loppuun'); //en muista oliko backendissä valmis viesti
   }
 };
 

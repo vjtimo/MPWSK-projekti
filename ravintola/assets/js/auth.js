@@ -1,6 +1,6 @@
 import {addItemsToCart} from './api.js';
 
-const url = 'http://10.120.32.99/app/api/';
+const url = 'https://10.120.32.99/app/api/';
 import {profileLink, loginLink, isLogged, setLogged} from './variables.js';
 const shoppingCart = document.querySelector('#cart');
 

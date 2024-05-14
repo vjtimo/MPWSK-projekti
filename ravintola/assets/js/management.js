@@ -23,7 +23,6 @@ const createButton = (id, status) => {
 const createButtonDeliv = (id, status) => {
   const button = document.createElement('button');
   button.innerText = status === 3 ? 'Aloita toimitus' : 'Valmis';
-  console.log(status);
   button.addEventListener(
     'click',
     async (e) => {

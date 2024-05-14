@@ -3,7 +3,15 @@ import {fetchData, postOrder, postProduct, deletePizzaById} from './api.js';
 import {addItemToCart} from './shoppingCart.js';
 import {isLogged, setLogged} from './variables.js';
 import {checkSession} from './auth.js';
-const url = 'http://10.120.32.99/app';
+const url = 'https://10.120.32.99/app';
+
+document.addEventListener('DOMContentLoaded', function () {
+  const item = JSON.parse(localStorage.getItem('clicked-item'));
+  if (item) {
+    createModal(item);
+    localStorage.removeItem('clicked-item');
+  }
+});
 const displayItems = async (admin) => {
   try {
     const data = await fetchData('pizzas');
@@ -48,6 +56,7 @@ const displayItems = async (admin) => {
       if (admin) {
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'delete product';
+        deleteButton.style = 'margin-bottom: 10px';
         deleteButton.addEventListener('click', async (e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -157,7 +166,7 @@ const addProductmodal = async () => {
 
   const priceLabel = document.createElement('label');
   priceLabel.setAttribute('for', 'price');
-  priceLabel.textContent = 'Hinta'; //
+  priceLabel.textContent = 'Hinta';
   form.appendChild(priceLabel);
 
   const priceInput = document.createElement('input');
@@ -239,7 +248,13 @@ const createModal = (data) => {
   let addToCartbtn = document.querySelector('.addToCart');
   addToCartbtn.addEventListener('click', (e) => {
     e.preventDefault();
-    isLogged() ? addItemToCart(data) : alert('kirjaudu sisään');
+    if (isLogged()) {
+      addItemToCart(data);
+      showToast('Tuote lisätty ostoskoriin!');
+    } else {
+      showToast('Tuotteiden lisääminen vaatii sisäänkirjautumisen');
+    }
+    closeModal();
   });
   modalDrop.classList.add('visible');
   modal.classList.add('visible');
@@ -260,7 +275,25 @@ const closeModal = (e) => {
   modal.style.display = 'none';
   modalDrop.classList.remove('visible');
 };
+const showToast = (message) => {
+  const toast = document.createElement('div');
+  toast.innerText = message;
+  toast.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  toast.style.color = 'white';
+  toast.style.padding = '10px';
+  toast.style.borderRadius = '5px';
+  toast.style.marginBottom = '10px';
+  toast.style.fontSize = '20px';
+  toast.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.5)';
+  const toastContainer = document.querySelector('#toastContainer');
+  toastContainer.appendChild(toast);
+  toastContainer.style.right = '50dvw';
+  toastContainer.style.top = '5rem';
 
+  setTimeout(() => {
+    toast.remove();
+  }, 4000);
+};
 (async () => {
   const {valid, role} = await checkSession();
 
