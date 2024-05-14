@@ -397,6 +397,9 @@ figcaption p {
 #restaurants h2 {
   padding: 0;
 }
+#register * {
+  margin: 5px 0;
+}
 #restaurants span {
   padding: 0;
 }
