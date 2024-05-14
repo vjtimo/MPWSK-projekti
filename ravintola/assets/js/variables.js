@@ -10,7 +10,7 @@ const setLogged = (status) => {
   if (typeof status === 'boolean') {
     logged = status;
   } else {
-    console.error('Status must be a boolean');
+    return;
   }
 };
 
