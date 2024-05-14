@@ -10,11 +10,14 @@ body {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 a:visited {
   color: inherit;
 }
-
+#login-form * {
+  margin: 5px 0;
+}
 #header {
   box-shadow: 3px 2px 15px #949393;
   position: sticky;
@@ -940,6 +943,10 @@ a:hover {
   color: #dd6161;
   font-size: smaller;
   margin: 4px;
+}
+#loginwrapper a {
+  margin: 10px 0;
+  color: blue;
 }
 @media only screen and (max-width: 800px) {
   #orderList li {
