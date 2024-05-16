@@ -29,8 +29,8 @@ const showToast = (message) => {
   toast.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.5)';
   const toastContainer = document.querySelector('#toastContainer');
   toastContainer.appendChild(toast);
-  toastContainer.style.left = '50dvw';
-  toastContainer.style.top = '2rem';
+  toastContainer.style.right = '50dvw';
+  toastContainer.style.top = '5rem';
 
   setTimeout(() => {
     toast.remove();
